@@ -1,0 +1,67 @@
+.Unit {
+    width: 100%;
+    height: 9em;
+    display:flex;
+    justify-content: space-around;
+    border-style: solid;
+    border-width: .1em;
+    padding: 5px;
+    margin: 5px;
+    color: white;
+}
+
+.keyValue {
+    display: flex;
+}
+
+
+.Left {
+    padding: 1em;
+    width: 10em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border-width: 1px;
+    border-color: black;
+    border-style: solid; */
+    background-color: #2e3036;
+}
+
+.Center {
+
+    width: 27em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* border-width: 1px;
+    border-color: black;
+    border-style: solid; */
+    
+}
+
+.CenterOtherValues {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: space-between;
+    padding: 1.3em;
+}
+
+.CenterOtherValues>* {
+    flex: 1 1 50%;
+}
+
+.Name {
+    font-size: x-large;
+}
+
+.Right {
+    padding: 1em;
+    width: 7em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border-width: 1px;
+    border-color: black;
+    border-style: solid; */
+    background-color: #2e3036;
+}
