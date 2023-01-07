@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Unit from "../Unit"
+import DropPosition from "../DropPosition"
 import "./Queue.css"
 
 import { nanoid } from 'nanoid'
 
 const testItems = [
     {
+        position: 0,
         name: "Warrior",
         leftName: 'Initiative',
         leftValue: 14,
@@ -27,6 +29,7 @@ const testItems = [
             }
         ]
     },{
+        position: 1,
         name: "Goblin",
         leftName: 'Initiative',
         leftValue: 8,
@@ -81,14 +84,21 @@ const Queue = ({
 
     return (
         <div className="Queue">
-            {Units.map(( unit ) => {
+            {Units.map(( unit, index ) => {
                 return(
-                <Unit 
-                    key={nanoid()}
-                    values={unit}
-                />
+                    <div>
+                        <Unit 
+                            key={nanoid()}
+                            values={unit}
+                        />
+                        <DropPosition 
+                            position={index}
+                        />
+                    </div>
+                
                 )
             })}
+            
         </div>
     )
 }

@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { nanoid } from 'nanoid'
+//import {ItemTypes } from './Constants'
+import {useDrag } from 'react-dnd'
 
 import "./Unit.css"
 
 const Unit = ({
     values,
 }) => {
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: "Unit",
+        collect: monitor => ({
+            isDragging: !!monitor.isDragging(),
+        }),
+    }))
 
     return (
-        <div className="Unit">
+        <div 
+            className="Unit" 
+            ref={drag}
+            style={{
+            opacity: isDragging ? 0.5 : 1,
+            cursor: 'move',
+            }}
+        >
             <div className="Left">
                 <div>{values.leftName}</div>
                 <div>{values.leftValue}</div>
