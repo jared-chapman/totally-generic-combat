@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { nanoid } from 'nanoid'
 
+
+
+
 import "./Unit.css"
+
+
+//ReactDOM.render(element, document.body)
 
 const Unit = ({
     values,
     move,
     active,
+    last,
 }) => {
 //console.log(values)
     
@@ -17,12 +24,17 @@ const Unit = ({
             style={active ? {borderColor: 'red'} : {}}
         >
             <div className="Arrows">
-                <span onClick={() => move(values.position, -1)}>up</span>
-                <span onClick={() => move(values.position, 1)}>down</span>
+                {values.position !== 0 ? (
+                    <i className="fa-solid fa-caret-up" onClick={() => move(values.position, -1)}></i>
+                ) : <i></i>}
+                
+                {!last ? (
+                    <i className="fa-solid fa-caret-down" onClick={() => move(values.position, 1)}></i>
+                ) : <i></i>}
             </div>
             <div className="Left">
-                <div>{values.leftName}</div>
-                <div>{values.leftValue}</div>
+                <div>{values.left.name}</div>
+                <div>{values.left.value}{values.left.max ? '/' + values.left.max : ''}</div>
             </div>
             <div className="Center">
                 <span className="Name">{values.name}</span>
@@ -40,8 +52,9 @@ const Unit = ({
                 </div>
             </div>
             <div className="Right">
-                <div>{values.rightName}</div>
-                <div>{values.rightValue}/{values.rightValueMax}</div>
+                <div>{values.right.name}</div>
+                <div>{values.right.value}{values.right.max ? '/' + values.right.max : ''}</div>
+                
             </div>
         </div>
     )

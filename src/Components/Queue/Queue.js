@@ -3,16 +3,24 @@ import Unit from "../Unit"
 import "./Queue.css"
 
 import { nanoid } from 'nanoid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
 
 const testItems = [
     {
         position: 0,
         name: "Warrior",
         leftName: 'Initiative',
-        leftValue: 14,
-        rightName: 'HP',
-        rightValue: 22,
-        rightValueMax: 22,
+        left: {
+            name: 'Initiative',
+            value: 8,
+        },
+        right: {
+            name: 'HP',
+            value: 9,
+            max: 12,
+        },
         otherValues: [
             {
                 name: 'HP',
@@ -30,11 +38,15 @@ const testItems = [
     },{
         position: 1,
         name: "Goblin",
-        leftName: 'Initiative',
-        leftValue: 8,
-        rightName: 'HP',
-        rightValue: 9,
-        rightValueMax: 12,
+        left: {
+            name: 'Initiative',
+            value: 8,
+        },
+        right: {
+            name: 'HP',
+            value: 9,
+            max: 12,
+        },
         otherValues: [
             {
                 name: 'HP',
@@ -70,11 +82,15 @@ const testItems = [
     {
         position: 2,
         name: "Goblin Leader",
-        leftName: 'Initiative',
-        leftValue: 10,
-        rightName: 'HP',
-        rightValue: 17,
-        rightValueMax: 17,
+        left: {
+            name: 'Initiative',
+            value: 8,
+        },
+        right: {
+            name: 'HP',
+            value: 9,
+            max: 12,
+        },
         otherValues: [
             {
                 name: 'HP',
@@ -176,8 +192,6 @@ const Queue = ({
 
     return (
         <div className="Queue">
-            <span onClick={() => changePosition(-1)}>Back</span>
-            <span onClick={() => changePosition(1)}>Forward</span>
             {units.map(( unit, index ) => {
                 return(
                 <Unit 
@@ -185,9 +199,14 @@ const Queue = ({
                     values={unit}
                     move={move}
                     active={index===active ? true : false}
+                    last={index===units.length-1 ? true : false}
                 />
                 )
             })}
+            <div className="ForwardPrevious">
+                <i className="fa-solid fa-backward" onClick={() => changePosition(-1)}></i>
+                <i className="fa-solid fa-forward" onClick={() => changePosition(1)}></i>
+            </div>
         </div>
     )
 }
