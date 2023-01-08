@@ -14,6 +14,15 @@
     display: flex;
 }
 
+.Arrows {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.Arrows>* {
+    cursor: pointer;
+}
 
 .Left {
     padding: 1em;

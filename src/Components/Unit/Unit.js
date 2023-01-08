@@ -5,10 +5,21 @@ import "./Unit.css"
 
 const Unit = ({
     values,
+    move,
+    active,
 }) => {
+//console.log(values)
+    
 
     return (
-        <div className="Unit">
+        <div 
+            className="Unit"
+            style={active ? {borderColor: 'red'} : {}}
+        >
+            <div className="Arrows">
+                <span onClick={() => move(values.position, -1)}>up</span>
+                <span onClick={() => move(values.position, 1)}>down</span>
+            </div>
             <div className="Left">
                 <div>{values.leftName}</div>
                 <div>{values.leftValue}</div>
