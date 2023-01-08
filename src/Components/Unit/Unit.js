@@ -14,6 +14,7 @@ const Unit = ({
     move,
     active,
     last,
+    setSelected,
 }) => {
 //console.log(values)
     
@@ -37,7 +38,7 @@ const Unit = ({
                 <div>{values.left.value}{values.left.max ? '/' + values.left.max : ''}</div>
             </div>
             <div className="Center">
-                <span className="Name">{values.name}</span>
+                <span className="Name" onClick={() => setSelected(values?.details)}>{values.name}</span>
                 <div className="CenterOtherValues">
                     {values.otherValues.map((value) => {
                         return(

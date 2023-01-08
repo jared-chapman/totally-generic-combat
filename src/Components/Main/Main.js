@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Queue from "../Queue"
+import Details from "../Details"
+import Menu from "../Menu"
 import "./Main.css"
 
 const Main = ({
 
 }) => {
-    const [name, setName] = useState("");
+    const [ data, setData ] = useState('');
 
     return (
         <div className="Main">
-            <Queue />
-            <div> rest of the page </div>
+            <Queue 
+                setData={setData}
+            />
+            <Details 
+                data={data}
+            />
+            <Menu
+
+            />
         </div>
     )
 }

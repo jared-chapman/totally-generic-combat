@@ -2,19 +2,18 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 40vw;
+    width: 45em;
+    padding-left: 1em;
+    padding-right: 2em;
 }
 
 .ForwardPrevious {
-    cursor: pointer;
     display: flex;
     justify-content: space-around;
     width: 100%;
+    color: white;
 }
 
 .ForwardPrevious>* {
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
-    padding: 0em 5em 0em 5em
+    cursor: pointer;
 }

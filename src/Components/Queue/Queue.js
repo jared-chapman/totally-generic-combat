@@ -34,7 +34,8 @@ const testItems = [
                 name: 'Spell Save DC',
                 value: '14'
             }
-        ]
+        ],
+        details: '<h1>WARRIOR</h1> <p>Hey cool HTML works</p>'
     },{
         position: 1,
         name: "Goblin",
@@ -76,8 +77,8 @@ const testItems = [
                 name: 'INT',
                 value: '7',
             },
-            
-        ]
+        ],
+        details: '<h1>GOBLIN</h1> <p>How do we support images locally?</p>'
     },
     {
         position: 2,
@@ -120,22 +121,28 @@ const testItems = [
                 name: 'INT',
                 value: '7',
             },
-            
-        ]
+        ],
+        details: '<h1>GOBLIN LEADER</h1> <p>🤷‍♂️</p>'
     },
 
 ]
 
 const Queue = ({
-
+    setData,
 }) => {
     const [ units, setUnits ] = useState(testItems);
     const [ active, setActive] = useState(0);
+    const [ selected, setSelected ] =useState(0);
 
     useEffect(() => {
         // initial mount
         setUnits(testItems);
     },[])
+
+    useEffect(() => {
+        // when selected is updated, update data of Main component
+        setData(selected)
+    }, [selected, setData])
 
     //console.log(units)
 
@@ -189,7 +196,6 @@ const Queue = ({
     }
 
 
-
     return (
         <div className="Queue">
             {units.map(( unit, index ) => {
@@ -200,6 +206,7 @@ const Queue = ({
                     move={move}
                     active={index===active ? true : false}
                     last={index===units.length-1 ? true : false}
+                    setSelected={setSelected}
                 />
                 )
             })}
