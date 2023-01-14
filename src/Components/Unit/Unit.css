@@ -60,6 +60,11 @@
     flex: 1 1 50%;
 }
 
+/* .NameAndEdit {
+    display: flex;
+    justify-content: space-between;
+} */
+
 .Name {
     font-size: x-large;
     cursor: pointer;

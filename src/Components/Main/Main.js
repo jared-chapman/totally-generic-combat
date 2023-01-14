@@ -20,6 +20,9 @@ const Main = ({
     const [ unitHTML, setUnitHTML ] = useState();
     const [ selected, setSelected ] = useState();
     const [ selectedPosition, setSelectedPosition ] = useState(0);
+    const [ editing, setEditing ] = useState(false);
+    const [ displayValue, setDisplayValue ] = useState();
+
 
     useEffect (() => {
     }, [unitHTML])
@@ -65,11 +68,18 @@ const Main = ({
                 setUnitHTML={setUnitHTML}
                 unitsArray={unitsArray}
                 setUnitsArray={setUnitsArray}
+                editing={editing}
+                setEditing={setEditing}
+                saveHTML={saveHTML}
             />
             <Details 
                 unitHTML={unitHTML}
                 setUnitHTML={setUnitHTML}
                 saveHTML={saveHTML}
+                editing={editing}
+                setEditing={setEditing}
+                displayValue={displayValue}
+                setDisplayValue={setDisplayValue}
             />
             <Menu
 

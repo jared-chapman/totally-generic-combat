@@ -9,16 +9,17 @@ const Details = ({
     unitHTML,
     setUnitHTML,
     saveHTML,
+    editing,
+    setEditing,
 }) => {
-    const [value, setValue] = useState(unitHTML);
-    const [editing, setEditing] = useState(false);
+    const [displayValue, setDisplayValue] = useState(unitHTML);
 
     const toggleEdit = () => {
         setEditing(!editing);
         const oldHTML = unitHTML;
-        const newHTML = value;
+        const newHTML = displayValue;
         //setUnitHTML(value);
-        saveHTML(value);
+        saveHTML(displayValue);
         //updateHTML(value);
     }
 
@@ -26,23 +27,23 @@ const Details = ({
 
     useEffect( () => {
         // console.log(unitHTML)
-        setValue(unitHTML);
+        setDisplayValue(unitHTML);
     },[unitHTML])
 
     return (
         <div className="Details">
-            {unitHTML ? 
-                <button onClick={()=>toggleEdit()}>{editing ? 'Confirm' : 'Edit'}</button> :
+            {(unitHTML && editing) ? 
+                <button onClick={()=>toggleEdit()}>Confirm</button> :
                 ''
             }
             {editing ? (
                 <div className="container">
                         <MDEditor
-                            value={value}
-                            onChange={setValue}
+                            value={displayValue}
+                            onChange={setDisplayValue}
                             preview={'edit'}
                         />
-                        <MDEditor.Markdown source={value} style={{ whiteSpace: 'pre-wrap' }} />
+                        <MDEditor.Markdown source={displayValue} style={{ whiteSpace: 'pre-wrap' }} />
                     </div>
                 ) : (
                     <div>{unitHTML ? parse(md.render(unitHTML.toString())) : ''}</div>

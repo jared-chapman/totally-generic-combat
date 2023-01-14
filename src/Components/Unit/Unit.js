@@ -16,9 +16,19 @@ const Unit = ({
     last,
     setSelected,
     setSelectedPosition,
+    editing,
+    setEditing,
+    unitHTML,
+    saveHTML
 }) => {
+    const [ previouslySelected, setPreviouslySelected ] = useState()
 
     const setSelectedAndSelectedPosition = (selected, position) => {
+        if (position !== previouslySelected) {
+            stopEditing()
+            setPreviouslySelected(position)
+        }
+
         if(selected) {
             setSelected(selected)
             setSelectedPosition(position)
@@ -28,6 +38,18 @@ const Unit = ({
          }
     }
     
+    const startEditing = (selected, position) => {
+        setEditing(true);
+        setSelectedAndSelectedPosition(selected, position)
+    }
+
+    const stopEditing = () => {
+        setEditing(false)
+    }
+
+    const doNothing = () => {
+
+    }
 
     return (
         <div 
@@ -48,7 +70,15 @@ const Unit = ({
                 <div>{values.left.value}{values.left.max ? '/' + values.left.max : ''}</div>
             </div>
             <div className="Center">
-                <span className="Name" onClick={() => setSelectedAndSelectedPosition(values?.details, values?.position)}>{values.name}</span>
+                <div className="NameAndEdit">
+                    <span className="Name" onClick={() => setSelectedAndSelectedPosition(values?.details, values?.position)}>{values.name}&nbsp;
+                        </span>
+                    <i className="fa-solid fa-pen-to-square" onClick={
+                        editing ? 
+                            '' :
+                            () => startEditing(values?.details, values?.position)
+                        }></i>
+                </div>
                 <div className="CenterOtherValues">
                     {values.otherValues.map((value) => {
                         return(

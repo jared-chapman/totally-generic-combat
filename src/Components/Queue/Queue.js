@@ -10,10 +10,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Queue = ({
     unitsArray,
     setUnitsArray,
+    unitHTML,
     setUnitHTML,
     selected,
     setSelected,
     setSelectedPosition,
+    saveHTML,
+    editing,
+    setEditing,
 }) => {
     const [ active, setActive] = useState(0);
 
@@ -90,6 +94,10 @@ const Queue = ({
                     last={index===unitsArray?.length-1 ? true : false}
                     setSelected={setSelected}
                     setSelectedPosition={setSelectedPosition}
+                    unitHTML={unitHTML}
+                    saveHTML={saveHTML}
+                    editing={editing}
+                    setEditing={setEditing}
                 />
                 )
             })}
