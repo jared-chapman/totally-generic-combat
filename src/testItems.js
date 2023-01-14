@@ -69,7 +69,7 @@ const testItems = [
                 value: '7',
             },
         ],
-        details: '<h1>GOBLIN</h1> <p>How do we support images locally?</p>'
+        details: '![](https://drive.google.com/uc?id=1xUXVsvO8qJCN5FtUhd1kNnB_UjXpzzvq)![](https://www.dndbeyond.com/avatars/thumbnails/30783/955/1000/1000/638062024584880857.png)'
     },
     {
         position: 2,
@@ -113,7 +113,7 @@ const testItems = [
                 value: '7',
             },
         ],
-        details: '<h1>GOBLIN LEADER</h1> <p>🤷‍♂️</p>'
+        details: '![](https://drive.google.com/uc?id=1xUXVsvO8qJCN5FtUhd1kNnB_UjXpzzvq)'
     },
 ]
 
