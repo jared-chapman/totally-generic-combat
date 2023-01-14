@@ -15,8 +15,15 @@ const Unit = ({
     active,
     last,
     setSelected,
+    setSelectedPosition,
 }) => {
 //console.log(values)
+
+    const setSelectedAndSelectedPosition = (selected, position) => {
+        // console.log({selected, position})
+        setSelected(selected)
+        setSelectedPosition(position)
+    }
     
 
     return (
@@ -38,7 +45,7 @@ const Unit = ({
                 <div>{values.left.value}{values.left.max ? '/' + values.left.max : ''}</div>
             </div>
             <div className="Center">
-                <span className="Name" onClick={() => setSelected(values?.details)}>{values.name}</span>
+                <span className="Name" onClick={() => setSelectedAndSelectedPosition(values?.details, values?.position)}>{values.name}</span>
                 <div className="CenterOtherValues">
                     {values.otherValues.map((value) => {
                         return(

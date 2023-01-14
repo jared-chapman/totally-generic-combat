@@ -4,18 +4,64 @@ import Details from "../Details"
 import Menu from "../Menu"
 import "./Main.css"
 
+import testItems from "../../testItems"
+
+const items = testItems
+
 const Main = ({
 
 }) => {
-    const [ data, setData ] = useState('');
+    const [ unitsArray, setUnitsArray ] = useState(items);
+    const [ unitHTML, setUnitHTML ] = useState();
+    const [ selected, setSelected ] = useState();
+    const [ selectedPosition, setSelectedPosition ] = useState(0);
+
+    useEffect (() => {
+    }, [unitHTML])
+
+    useEffect (() => {
+
+    }, [selected])
+    
+    useEffect (() => {
+    }, [selectedPosition])
+
+    useEffect (() => {
+    }, [])
+
+
+    const saveHTML = (newHTML) => {
+        const newItem = unitsArray.find(x => x.position===selectedPosition)
+        newItem.details = newHTML
+
+
+        const newItems = []
+        unitsArray.forEach((x, index) => {
+            if (index === selectedPosition) {
+                newItems.push(newItem);
+            } else {
+                newItems.push(x)
+            }
+        })
+        setUnitsArray(newItems)
+    }
+
 
     return (
         <div className="Main">
             <Queue 
-                setData={setData}
+                selected={selected}
+                setSelected={setSelected}
+                selectedPosition={selectedPosition}
+                setSelectedPosition={setSelectedPosition}
+                unitHTML={unitHTML}
+                setUnitHTML={setUnitHTML}
+                unitsArray={unitsArray}
             />
             <Details 
-                data={data}
+                unitHTML={unitHTML}
+                setUnitHTML={setUnitHTML}
+                saveHTML={saveHTML}
             />
             <Menu
 
