@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import parse from 'html-react-parser';
+var md = require('markdown-it')();
 import "./Details.css"
 import MDEditor from '@uiw/react-md-editor';
 
@@ -10,7 +11,7 @@ const Details = ({
     saveHTML,
 }) => {
     const [value, setValue] = useState(unitHTML);
-    const [editing, setEditing] = useState(true);
+    const [editing, setEditing] = useState(false);
 
     const toggleEdit = () => {
         setEditing(!editing);
@@ -29,12 +30,6 @@ const Details = ({
         setValue(unitHTML);
     },[unitHTML])
 
-    
-
-    // useEffect( () => {
-    // }, [unitHTML])
-
-
     return (
         <div>
             {editing ? (
@@ -46,7 +41,7 @@ const Details = ({
                         <MDEditor.Markdown source={value} style={{ whiteSpace: 'pre-wrap' }} />
                     </div>
                 ) : (
-                    <div>{unitHTML ? parse(unitHTML.toString()) : ''}</div>
+                    <div>{unitHTML ? parse(md.render(unitHTML.toString())) : ''}</div>
                 )}
                 {unitHTML ? 
                     <button onClick={()=>toggleEdit()}>{editing ? 'Confirm' : 'Edit'}</button> :
