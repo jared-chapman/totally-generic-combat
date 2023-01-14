@@ -17,8 +17,7 @@ const Details = ({
         setEditing(!editing);
         const oldHTML = unitHTML;
         const newHTML = value;
-        setUnitHTML(value);
-
+        //setUnitHTML(value);
         saveHTML(value);
         //updateHTML(value);
     }

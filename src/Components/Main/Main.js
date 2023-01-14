@@ -6,7 +6,12 @@ import "./Main.css"
 
 import testItems from "../../testItems"
 
-const items = testItems
+var ls = require('local-storage');
+
+const lsItems = ls.get('units')
+console.log(lsItems)
+const items = lsItems ?? testItems
+
 
 const Main = ({
 
@@ -44,6 +49,8 @@ const Main = ({
             }
         })
         setUnitsArray(newItems)
+        setUnitHTML(newHTML);
+        ls.set('units', newItems)
     }
 
 
@@ -57,6 +64,7 @@ const Main = ({
                 unitHTML={unitHTML}
                 setUnitHTML={setUnitHTML}
                 unitsArray={unitsArray}
+                setUnitsArray={setUnitsArray}
             />
             <Details 
                 unitHTML={unitHTML}

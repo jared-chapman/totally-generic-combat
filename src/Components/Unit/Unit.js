@@ -17,12 +17,15 @@ const Unit = ({
     setSelected,
     setSelectedPosition,
 }) => {
-//console.log(values)
 
     const setSelectedAndSelectedPosition = (selected, position) => {
-        // console.log({selected, position})
-        setSelected(selected)
-        setSelectedPosition(position)
+        if(selected) {
+            setSelected(selected)
+            setSelectedPosition(position)
+        } else {
+            setSelected(null)
+            setSelectedPosition(null)
+         }
     }
     
 
