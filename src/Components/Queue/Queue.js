@@ -10,9 +10,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Queue = ({
     unitsArray,
     setUnitsArray,
-    unitHTML,
-    setUnitHTML,
-    selected,
     setSelected,
     setSelectedPosition,
     saveHTML,
@@ -21,10 +18,7 @@ const Queue = ({
 }) => {
     const [ active, setActive] = useState(0);
 
-    useEffect(() => {
-        // when selected is updated, update unitHTML of Main component
-        setUnitHTML(selected)
-    }, [selected])
+
 
 
     const move = (position, direction) => {
@@ -56,7 +50,6 @@ const Queue = ({
             }
             return unit
         })
-
 
         updatedUnits.sort(function(a,b) {
             let keyA = a.position;
@@ -94,7 +87,6 @@ const Queue = ({
                     last={index===unitsArray?.length-1 ? true : false}
                     setSelected={setSelected}
                     setSelectedPosition={setSelectedPosition}
-                    unitHTML={unitHTML}
                     saveHTML={saveHTML}
                     editing={editing}
                     setEditing={setEditing}

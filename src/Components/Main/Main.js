@@ -17,25 +17,11 @@ const Main = ({
 
 }) => {
     const [ unitsArray, setUnitsArray ] = useState(items);
-    const [ unitHTML, setUnitHTML ] = useState();
     const [ selected, setSelected ] = useState();
     const [ selectedPosition, setSelectedPosition ] = useState(0);
     const [ editing, setEditing ] = useState(false);
     const [ displayValue, setDisplayValue ] = useState();
 
-
-    useEffect (() => {
-    }, [unitHTML])
-
-    useEffect (() => {
-
-    }, [selected])
-    
-    useEffect (() => {
-    }, [selectedPosition])
-
-    useEffect (() => {
-    }, [])
 
 
     const saveHTML = (newHTML) => {
@@ -52,20 +38,20 @@ const Main = ({
             }
         })
         setUnitsArray(newItems)
-        setUnitHTML(newHTML);
         ls.set('units', newItems)
     }
 
 
     return (
         <div className="Main">
+            <Menu
+
+            />
             <Queue 
                 selected={selected}
                 setSelected={setSelected}
                 selectedPosition={selectedPosition}
                 setSelectedPosition={setSelectedPosition}
-                unitHTML={unitHTML}
-                setUnitHTML={setUnitHTML}
                 unitsArray={unitsArray}
                 setUnitsArray={setUnitsArray}
                 editing={editing}
@@ -73,16 +59,13 @@ const Main = ({
                 saveHTML={saveHTML}
             />
             <Details 
-                unitHTML={unitHTML}
-                setUnitHTML={setUnitHTML}
                 saveHTML={saveHTML}
                 editing={editing}
                 setEditing={setEditing}
                 displayValue={displayValue}
                 setDisplayValue={setDisplayValue}
-            />
-            <Menu
-
+                selected={selected}
+                name={unitsArray[selectedPosition]?.name}
             />
         </div>
     )

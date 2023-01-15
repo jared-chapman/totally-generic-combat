@@ -1,10 +1,21 @@
 .Details {
     width: 60em;
     color: white;
-    
+    padding-right: 3em;
 }
 
 .Details > * {
     max-height: 80vh;
     overflow: auto;
+}
+
+.DisplayHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #2e3036;
+}
+
+.DisplayTitle{
+    font-size: x-large;
 }
