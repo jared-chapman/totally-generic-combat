@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import Queue from "../Queue"
 import Details from "../Details"
 import Menu from "../Menu"
@@ -13,9 +13,9 @@ console.log(lsItems)
 const items = lsItems ?? testItems
 
 
-const Main = ({
+const Main = (
 
-}) => {
+) => {
     const [ unitsArray, setUnitsArray ] = useState(items);
     const [ selected, setSelected ] = useState();
     const [ selectedPosition, setSelectedPosition ] = useState(0);

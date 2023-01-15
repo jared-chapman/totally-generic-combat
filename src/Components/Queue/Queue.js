@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import Unit from "../Unit"
 import "./Queue.css"
 
 import { nanoid } from 'nanoid'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 

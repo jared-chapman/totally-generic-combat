@@ -14,11 +14,7 @@ const Details = ({
 }) => {
     const [displayValue, setDisplayValue] = useState(selected);
 
-    const toggleEdit = () => {
-        //setEditing(!editing);
-        
-        console.log(editing)
-    }
+
 
     const startEditing = () => {
         setEditing(true);

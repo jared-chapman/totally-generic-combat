@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { nanoid } from 'nanoid'
 
 
@@ -15,10 +15,7 @@ const Unit = ({
     active,
     last,
     setSelected,
-    setSelectedPosition,
-    editing,
-    setEditing,
-    saveHTML
+    setSelectedPosition
 }) => {
     const [ previouslySelected, setPreviouslySelected ] = useState()
 
@@ -39,9 +36,6 @@ const Unit = ({
     
     
 
-    const doNothing = () => {
-
-    }
 
     return (
         <div 
