@@ -11,12 +11,11 @@ const Queue = ({
     unitsArray,
     setUnitsArray,
     setSelected,
-    setSelectedPosition,
-    saveHTML,
-    editing,
+    selected,
     setEditing,
+    active,
+    setActive
 }) => {
-    const [ active, setActive] = useState(0);
 
 
 
@@ -86,9 +85,7 @@ const Queue = ({
                     active={index===active ? true : false}
                     last={index===unitsArray?.length-1 ? true : false}
                     setSelected={setSelected}
-                    setSelectedPosition={setSelectedPosition}
-                    saveHTML={saveHTML}
-                    editing={editing}
+                    viewing={selected?.position===index}
                     setEditing={setEditing}
                 />
                 )

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { nanoid } from 'nanoid'
 
 
@@ -15,32 +15,27 @@ const Unit = ({
     active,
     last,
     setSelected,
-    setSelectedPosition
+    setEditing,
+    viewing,
 }) => {
-    const [ previouslySelected, setPreviouslySelected ] = useState()
 
-    const setSelectedAndSelectedPosition = (selected, position) => {
-        if (position !== previouslySelected) {
-            // stopEditing()
-            setPreviouslySelected(position)
-        }
-
-        if(selected) {
-            setSelected(selected)
-            setSelectedPosition(position)
-        } else {
-            setSelected(null)
-            setSelectedPosition(null)
-         }
+    const setSelectedStopEditing = (clickedUnit) => {
+        setEditing(false)
+        setSelected(clickedUnit)
+        // console.log("clickedUnit", clickedUnit)
     }
-    
-    
+
+    useEffect(() => {
+        console.log("viewing", viewing)
+    },[viewing])
+
+  
 
 
     return (
         <div 
             className="Unit"
-            style={active ? {borderColor: 'red'} : {}}
+            style={active ? {borderColor: 'red'} : {}  }
         >
             <div className="Arrows">
                 {values.position !== 0 ? (
@@ -57,8 +52,13 @@ const Unit = ({
             </div>
             <div className="Center">
                 <div className="NameAndEdit">
-                    <span className="Name" onClick={() => setSelectedAndSelectedPosition(values?.details, values?.position)}>{values.name}&nbsp;
-                        </span>
+                    <span 
+                        className="Name" 
+                        onClick={() => setSelectedStopEditing(values)}
+                        style={(viewing) ? {color: 'purple'} : {} }
+                    >
+                        {values.name}&nbsp;
+                    </span>
                 </div>
                 <div className="CenterOtherValues">
                     {values.otherValues.map((value) => {

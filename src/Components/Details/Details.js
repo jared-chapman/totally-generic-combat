@@ -11,6 +11,7 @@ const Details = ({
     setEditing,
     name,
     selected,
+    active,
 }) => {
     const [displayValue, setDisplayValue] = useState(selected);
 
@@ -18,25 +19,21 @@ const Details = ({
 
     const startEditing = () => {
         setEditing(true);
-        //setSelectedAndSelectedPosition(selected, position)
     }
 
     const stopEditing = () => {
         setEditing(false)
-        setDisplayValue(selected);
+        setDisplayValue(selected?.details);
         saveHTML(displayValue);
     }
 
     
 
     useEffect( () => {
-        // console.log(unitHTML)
-        setDisplayValue(selected);
-        console.log("selected", selected)
-    },[selected])
+        setDisplayValue(selected?.details);
+    },[selected, editing, active])
 
     const update = (x) => {
-        console.log(x);
         setDisplayValue(x);
     }
 
