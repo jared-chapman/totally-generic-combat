@@ -41,10 +41,13 @@ const Details = ({
         <div className="Details">
             <div className="DisplayHeader">
                 <div></div>
-                <div className="DisplayTitle">{name ? name : 'a'}</div>
-                {!editing ? 
-                    <i className="fa-solid fa-pen-to-square" onClick={() => startEditing()}></i> :
-                    <i className="fa-solid fa-check" onClick={() => stopEditing()}></i>
+                <div className="DisplayTitle">{name ? name : ''}</div>
+                {name ?
+                    !editing ? 
+                        <i className="fa-solid fa-pen-to-square" onClick={() => startEditing()}></i> :
+                        <i className="fa-solid fa-check" onClick={() => stopEditing()}></i>
+                        :
+                        ''
                 }
             </div>
             {editing ? (
