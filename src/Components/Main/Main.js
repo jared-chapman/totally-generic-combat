@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Queue from "../Queue"
 import Details from "../Details"
 import Menu from "../Menu"
+import ValueEdit from "../ValueEdit"
 import "./Main.css"
 
 import testItems from "../../testItems"
@@ -20,6 +21,7 @@ const Main = (
     const [ selected, setSelected ] = useState(); // unit/note that is clicked on/full data
     const [ active, setActive] = useState(0); // the position of the unit who's turn it is (red border)
     const [ editing, setEditing ] = useState(false); // whether or not the main editor is open
+    const [ test, setTest ] = useState("hi")
 
 
     const saveHTML = (newHTML) => {
@@ -41,6 +43,9 @@ const Main = (
         ls.set('units', newItems)
     }
 
+    const setValue = (x) => {
+        console.log("Saved", x)
+    }
 
     return (
         <div className="Main">
@@ -64,6 +69,8 @@ const Main = (
                 name={unitsArray[selected?.position]?.name}
                 active={active}
             />
+            
+
         </div>
     )
 }

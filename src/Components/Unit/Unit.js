@@ -5,6 +5,8 @@ import { nanoid } from 'nanoid'
 
 
 import "./Unit.css"
+import "../EditableValue"
+import EditableValue from "../EditableValue";
 
 
 //ReactDOM.render(element, document.body)
@@ -47,9 +49,13 @@ const Unit = ({
                 ) : <i></i>}
             </div>
             <div className="Left">
-                <div>{values.left.name}</div>
-                <div>{values.left.value}{values.left.max ? '/' + values.left.max : ''}</div>
-            </div>
+                {/* <div>{values.left.name}</div>
+                <div>{values.left.value}{values.left.max ? '/' + values.left.max : ''}</div> */}
+                <EditableValue
+                    property={values.left.name}
+                    value={values.left.value}
+                />
+                            </div>
             <div className="Center">
                 <div className="NameAndEdit">
                     <span 
@@ -76,8 +82,12 @@ const Unit = ({
             <div className="Right">
                 <div>{values.right.name}</div>
                 <div>{values.right.value}{values.right.max ? '/' + values.right.max : ''}</div>
-                
             </div>
+            {/* <ValueEdit
+                property={"Name"}
+                value={"Warrior"}
+                setValue={setValue}
+             /> */}
         </div>
     )
 }
