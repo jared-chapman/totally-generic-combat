@@ -43,6 +43,18 @@ const Main = (
         ls.set('units', newItems)
     }
 
+    const updateUnitValue = (position, path, value) => {
+        const oldUnit = unitsArray[position]
+
+        for (let i=0, path=path.split('.'), len=path.length; i<len; i++){
+            obj = oldUnit[path[i]];
+        };
+        console.log("new object", obj);
+
+        // newUnit[path] = value;
+        // console.log(newUnit)
+    }
+
     const setValue = (x) => {
         console.log("Saved", x)
     }
@@ -60,6 +72,7 @@ const Main = (
                 active={active}
                 setActive={setActive}
                 selected={selected}
+                updateUnitValue={updateUnitValue}
             />
             <Details 
                 saveHTML={saveHTML}

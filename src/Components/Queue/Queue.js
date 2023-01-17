@@ -14,7 +14,8 @@ const Queue = ({
     selected,
     setEditing,
     active,
-    setActive
+    setActive,
+    updateUnitValue,
 }) => {
 
 
@@ -87,6 +88,7 @@ const Queue = ({
                     setSelected={setSelected}
                     viewing={selected?.position===index}
                     setEditing={setEditing}
+                    updateUnitValue={updateUnitValue}
                 />
                 )
             })}

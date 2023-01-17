@@ -9,7 +9,10 @@ import "./ValueEdit.css"
 const ValueEdit = ({
     property,
     value,
-    setValue
+    setValue,
+    updateUnitValue,
+    position,
+    path
 }) => {
     const [formValue, setFormValue] = useState(value)
 
@@ -18,7 +21,11 @@ const ValueEdit = ({
     }, [formValue])
 
     
-
+    const update = () +> {
+        setValue(formValue)
+        console.log("initial call")
+        updateUnitValue(position, path, formValue)
+    }
 
     return (
         <div className="PopupContainer">
@@ -30,7 +37,7 @@ const ValueEdit = ({
                 onChange={e => setFormValue(e.target.value)}
                 placeholder={value}
                 />
-            <i className="fa-solid fa-floppy-disk" onClick={() => setValue(formValue)}></i>
+            <i className="fa-solid fa-floppy-disk" onClick={() => update()}></i>
         </div>
     )
 }

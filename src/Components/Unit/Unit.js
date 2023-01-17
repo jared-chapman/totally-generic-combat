@@ -19,6 +19,7 @@ const Unit = ({
     setSelected,
     setEditing,
     viewing,
+    updateUnitValue
 }) => {
 
     const setSelectedStopEditing = (clickedUnit) => {
@@ -54,6 +55,9 @@ const Unit = ({
                 <EditableValue
                     property={values.left.name}
                     value={values.left.value}
+                    updateUnitValue={updateUnitValue}
+                    position={values.position}
+                    path={'left.value'}
                 />
                             </div>
             <div className="Center">

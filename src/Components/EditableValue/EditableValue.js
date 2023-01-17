@@ -11,7 +11,11 @@ var md = require('markdown-it')();
 const EditableValue = ({
     property,
     value,
+    updateUnitValue,
+    position,
+    path,
 }) => {
+    
     const [formValue, setFormValue] = useState(value)
     const [editing, setEditing] = useState(false)
 
@@ -41,6 +45,9 @@ const EditableValue = ({
                     property={property}
                     value={value}
                     setValue={setValue}
+                    updateUnitValue={updateUnitValue}
+                    position={position}
+                    path={path}
                 />
             
         }
