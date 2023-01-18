@@ -29,7 +29,7 @@ const Unit = ({
     }
 
     useEffect(() => {
-        console.log("viewing", viewing)
+        // console.log("viewing", viewing)
     },[viewing])
 
   

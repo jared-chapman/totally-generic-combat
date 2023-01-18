@@ -35,7 +35,9 @@ const ValueEdit = ({
                 onChange={e => setFormValue(e.target.value)}
                 placeholder={value}
                 />
-            <i className="fa-solid fa-floppy-disk" onClick={() => update()}></i>
+            <i className="fa-solid fa-check UpdateButton" onClick={() => update()}></i>
+            <i className="fa-solid fa-xmark CancelButton" onClick={() => update()}></i>
+
         </div>
     )
 }

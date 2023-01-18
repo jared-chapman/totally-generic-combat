@@ -3,16 +3,17 @@ import Queue from "../Queue"
 import Details from "../Details"
 import Menu from "../Menu"
 import ValueEdit from "../ValueEdit"
+import Test from "../Test"
 import "./Main.css"
 
-import testItems from "../../testItems"
+
+import testUnits from "../../testItems"
 
 var ls = require('local-storage');
 
 const lsItems = ls.get('units')
 console.log(lsItems)
-const items = lsItems ?? testItems
-
+const items = lsItems ?? testUnits
 
 const Main = (
 
@@ -21,7 +22,52 @@ const Main = (
     const [ selected, setSelected ] = useState(); // unit/note that is clicked on/full data
     const [ active, setActive] = useState(0); // the position of the unit who's turn it is (red border)
     const [ editing, setEditing ] = useState(false); // whether or not the main editor is open
-    const [ test, setTest ] = useState("hi")
+    
+
+
+    // const getValueFromMidi = (CC, min, max) => {
+    //     const midiIndex = midiValues.findIndex(obj => obj?.CC == CC);
+    //     if (!midiValues[midiIndex]) {
+    //         return min;
+    //     }
+    //     const input = (midiValues[midiIndex].value / 127) ?? 0;
+    //     const output = lerp(min, max, input)
+    //     return parseInt(output);
+    // }
+
+
+    // function lerp (start, end, amt){
+    //     return (1-amt)*start+amt*end
+    //     }
+
+
+
+    // function onMIDISuccess(midiAccess) {
+    //     var inputs = midiAccess.inputs;
+    //     for (var input of midiAccess.inputs.values())
+    //         input.onmidimessage = getMIDIMessage;
+    // }
+    // function onMIDIFailure() {
+    //     console.log('Could not access your MIDI devices.');
+    // }
+
+    
+    
+
+    // function getMIDIMessage(midiMessage) {
+    //     const data = {
+    //         'CC': midiMessage?.data[1],
+    //         'value': midiMessage?.data[2],
+    //     }
+    //     setMidiMessage(data)
+    // }
+
+
+
+
+
+
+
 
 
     const saveHTML = (newHTML) => {
@@ -60,8 +106,9 @@ const Main = (
 
     return (
         <div className="Main">
+            <Test 
+            />
             <Menu
-
             />
             <Queue 
                 setSelected={setSelected}

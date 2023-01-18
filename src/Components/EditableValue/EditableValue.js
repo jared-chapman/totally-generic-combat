@@ -21,7 +21,7 @@ const EditableValue = ({
     const [editingSingle, setEditingSingle] = useState(false)
 
     useEffect(() => {
-        console.log(formValue)
+        // console.log(formValue)
     }, [formValue])
 
 
@@ -30,8 +30,8 @@ const EditableValue = ({
         className="EditableValue"
         >
             {!editingSingle ? 
-                <div>
-                    <div onClick={() => setEditingSingle(!editingSingle)}>{property}</div>
+                <div onClick={() => setEditingSingle(!editingSingle)}>
+                    <div >{property}</div>
                     <div>{value}{max ? ` / ${max}` : null}</div>
                 </div>
                 :

@@ -3,7 +3,6 @@ import "./Menu.css"
 
 
 const Main = ({
-
 }) => {
     const [ data, setData ] = useState('');
 

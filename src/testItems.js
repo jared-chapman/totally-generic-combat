@@ -1,4 +1,4 @@
-const testItems = [
+const testUnits = [
     {
         position: 0,
         name: "Warrior2",
@@ -117,4 +117,4 @@ const testItems = [
     },
 ]
 
-export default testItems;
+export default testUnits;
