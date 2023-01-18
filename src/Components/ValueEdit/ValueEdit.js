@@ -1,29 +1,27 @@
 import React, { useState, useEffect } from "react";
 import parse from 'html-react-parser';
 import MDEditor from '@uiw/react-md-editor';
+import "./ValueEdit.css"
 var md = require('markdown-it')();
 
-import "./ValueEdit.css"
 
 
 const ValueEdit = ({
     property,
     value,
-    setValue,
     updateUnitValue,
     position,
-    path
+    path,
+    setEditingSingle
 }) => {
     const [formValue, setFormValue] = useState(value)
 
-    useEffect(() => {
-        console.log(formValue)
-    }, [formValue])
+    
+
 
     
-    const update = () +> {
-        setValue(formValue)
-        console.log("initial call")
+    const update = () => {
+        setEditingSingle(false)
         updateUnitValue(position, path, formValue)
     }
 

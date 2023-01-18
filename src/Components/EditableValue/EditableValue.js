@@ -11,43 +11,37 @@ var md = require('markdown-it')();
 const EditableValue = ({
     property,
     value,
+    max,
     updateUnitValue,
     position,
     path,
 }) => {
     
     const [formValue, setFormValue] = useState(value)
-    const [editing, setEditing] = useState(false)
+    const [editingSingle, setEditingSingle] = useState(false)
 
     useEffect(() => {
         console.log(formValue)
     }, [formValue])
 
-    const openEdit = () => {
-        setEditing(true)
-    }
-
-
-
 
     return (
         <div 
         className="EditableValue"
-        onClick={() => openEdit()}
         >
-            {!editing ? 
+            {!editingSingle ? 
                 <div>
-                    <div>{property}</div>
-                    <div>{value}</div>
+                    <div onClick={() => setEditingSingle(!editingSingle)}>{property}</div>
+                    <div>{value}{max ? ` / ${max}` : null}</div>
                 </div>
                 :
                 <ValueEdit 
                     property={property}
                     value={value}
-                    setValue={setValue}
                     updateUnitValue={updateUnitValue}
                     position={position}
                     path={path}
+                    setEditingSingle={setEditingSingle}
                 />
             
         }

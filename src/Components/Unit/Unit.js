@@ -57,7 +57,7 @@ const Unit = ({
                     value={values.left.value}
                     updateUnitValue={updateUnitValue}
                     position={values.position}
-                    path={'left.value'}
+                    path={'left'}
                 />
                             </div>
             <div className="Center">
@@ -84,8 +84,16 @@ const Unit = ({
                 </div>
             </div>
             <div className="Right">
-                <div>{values.right.name}</div>
-                <div>{values.right.value}{values.right.max ? '/' + values.right.max : ''}</div>
+                {/* <div>{values.right.name}</div>
+                <div>{values.right.value}{values.right.max ? '/' + values.right.max : ''}</div> */}
+                <EditableValue
+                    property={values.right.name}
+                    value={values.right.value}
+                    max={values.right.max}
+                    updateUnitValue={updateUnitValue}
+                    position={values.position}
+                    path={'right'}
+                />
             </div>
             {/* <ValueEdit
                 property={"Name"}

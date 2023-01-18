@@ -44,15 +44,14 @@ const Main = (
     }
 
     const updateUnitValue = (position, path, value) => {
-        const oldUnit = unitsArray[position]
+        const unitsArrayCopy = [...unitsArray]
+        if (typeof unitsArrayCopy[position][path] === 'object') {
+            unitsArrayCopy[position][path].value=value
+        } else {
+            unitsArrayCopy[position][path]=value
 
-        for (let i=0, path=path.split('.'), len=path.length; i<len; i++){
-            obj = oldUnit[path[i]];
-        };
-        console.log("new object", obj);
-
-        // newUnit[path] = value;
-        // console.log(newUnit)
+        }
+        setUnitsArray(unitsArrayCopy)
     }
 
     const setValue = (x) => {
