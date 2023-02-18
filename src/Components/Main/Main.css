@@ -1,11 +1,11 @@
 .Main{
-    background-color: #282c34;
-    min-height: 85vh;
+    background-color: white;
+    min-height: 95vh;
     display: flex;
     justify-content: space-between
 }
 
-.Main>* {
+.Main > * {
     /* border-style: solid;
     border-width: 1px;
     border-color: blue; */

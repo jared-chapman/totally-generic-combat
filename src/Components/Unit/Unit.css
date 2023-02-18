@@ -7,7 +7,7 @@
     border-width: .1em;
     padding: .2em;
     margin: .2em;
-    color: white;
+    color: black;
 }
 
 .keyValue {
@@ -31,10 +31,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* border-width: 1px;
+    border-width: 1px;
     border-color: black;
-    border-style: solid; */
-    background-color: #2e3036;
+    border-style: solid;
+    background-color: white;
 }
 
 .Center {
@@ -79,8 +79,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* border-width: 1px;
+    border-width: 1px;
     border-color: black;
-    border-style: solid; */
-    background-color: #2e3036;
+    border-style: solid;
+    background-color: white;
 }

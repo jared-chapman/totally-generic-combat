@@ -1,6 +1,6 @@
 .Details {
     width: 60em;
-    color: white;
+    color: black;
     padding-right: 3em;
 }
 
@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #2e3036;
+    background-color: white;
 }
 
 .DisplayTitle{

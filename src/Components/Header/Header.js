@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import "./Menu.css"
+import "./Header.css"
 
 
-const Menu = ({
+const Main = ({
 }) => {
     const [ data, setData ] = useState('');
 
     return (
-        <div className="Menu">
-            Hi I'm a menu 👋
+        <div className="Header">
         </div>
     )
 }
 
 
-export default Menu;
+export default Main;
