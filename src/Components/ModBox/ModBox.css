@@ -1,0 +1,27 @@
+.MoxBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.MiddleRow {
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+    /* border-style: solid;
+    border-width: 1px;
+    border-color: blue; */
+}
+
+.ModBox > * {
+    color: white;
+}
+
+.ModInput {
+    color: black;
+    width: 20%;
+    text-align: center;
+    border-radius: 15px;
+    border-color: black;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

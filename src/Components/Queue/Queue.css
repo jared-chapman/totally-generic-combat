@@ -17,3 +17,7 @@
 .ForwardPrevious>* {
     cursor: pointer;
 }
+
+.Options {
+    display: flex;
+}

@@ -6,39 +6,73 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     }
 
-.PopupProperty {
-    color: white;
+    
+.PopupInputs {
     position: absolute;
-    left: 30%;
-    right: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    left: 44%;
+    right: 44%;
     bottom: 60%;
-    top: 23%;
-    text-align: center;
-    margin: auto;
-    font-size: xx-large;
+    top: 30%; 
+    height: 20vh;
+
 }
-
-.PopupValue {
-    position: absolute;
-    left: 30%;
-    right: 30%;
-    bottom: 60%;
-    top: 30%;
-    text-align: center;
-    margin: auto;
-    border-radius: 15px;
-    border-color: black;
-    background: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-
-    .UpdateButton {
-        position: absolute;
+    .PopupProperty {
+        color: white;
+        /* position: absolute;
         left: 30%;
         right: 30%;
-        bottom: 50%;
-        top: 42%;
+        bottom: 60%;
+        top: 23%; */
+        text-align: center;
+        /* margin: auto; */
+        font-size: xx-large;
     }
+
+    .PopupValue {
+        /* position: absolute;
+        left: 44%;
+        right: 44%;
+        bottom: 60%;
+        top: 30%; */
+        text-align: center;
+        /* margin: auto; */
+        border-radius: 15px;
+        border-color: black;
+        background: white;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+/* .UpdateButton {
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    bottom: 50%;
+    top: 42%;
+} */
+
+.ConfirmCancelButtons {
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+    /* border-style: solid;
+    border-width: 1px;
+    border-color: blue;
+    font-size: large; */
+    /* position: absolute;
+    width: 10vw;
+    left: 45%;
+    bottom: 55%; */
+
+}
+
+.ConfirmCancelButtons > * {
+    color: white;
+    /* margin-left: 1em;
+    margin-right: 1em; */
+}
