@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import parse from 'html-react-parser';
-import MDEditor from '@uiw/react-md-editor';
+import ModBox from "../ModBox";
 import "./ValueEdit.css"
-var md = require('markdown-it')();
 
 
 
@@ -12,7 +10,8 @@ const ValueEdit = ({
     updateUnitValue,
     position,
     path,
-    setEditingSingle
+    setEditingSingle,
+    showModBox,
 }) => {
     const [formValue, setFormValue] = useState(value)
 
@@ -21,23 +20,42 @@ const ValueEdit = ({
 
     
     const update = () => {
+        updateUnitValue(position, path, parseInt(formValue))
         setEditingSingle(false)
-        updateUnitValue(position, path, formValue)
+    }
+
+    const cancel = () => {
+        setEditingSingle(false);
+    }
+
+    const reset = () => {
+        setFormValue(value)
     }
 
     return (
         <div className="PopupContainer">
-            <div className="PopupProperty">{property}</div>
-            <input
-                className="PopupValue"
-                name='formValue'
-                type='text'
-                onChange={e => setFormValue(e.target.value)}
-                placeholder={value}
+            <div className = "PopupInputs">
+                <div className="PopupProperty">{property}</div>
+                <input
+                    className="PopupValue"
+                    name='formValue'
+                    type='text'
+                    onChange={e => setFormValue(e.target.value)}
+                    value={formValue}
+                    placeholder={value}
                 />
-            <i className="fa-solid fa-check UpdateButton" onClick={() => update()}></i>
-            <i className="fa-solid fa-xmark CancelButton" onClick={() => update()}></i>
-
+                {showModBox && (
+                    <ModBox
+                        formValue={formValue}
+                        setFormValue={setFormValue}
+                    />
+                )}
+                <div className="ConfirmCancelButtons">
+                    <i className="fa-solid fa-xmark" onClick={() => cancel()}></i>
+                    <i className="fa-solid fa-rotate-left" onClick={() => reset()}></i>
+                    <i className="fa-solid fa-check" onClick={() => update()}></i>
+                </div>
+            </div>
         </div>
     )
 }

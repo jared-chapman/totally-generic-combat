@@ -14,7 +14,7 @@ const testUnits = [
         },
         otherValues: [
             {
-                name: 'HP',
+                name: 'Max HP',
                 value: 22
             },
             {
@@ -41,7 +41,7 @@ const testUnits = [
         },
         otherValues: [
             {
-                name: 'HP',
+                name: 'Max HP',
                 value: 14,
             },
             {
@@ -85,7 +85,7 @@ const testUnits = [
         },
         otherValues: [
             {
-                name: 'HP',
+                name: 'Max HP',
                 value: 17,
             },
             {

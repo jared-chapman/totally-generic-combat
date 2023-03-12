@@ -19,7 +19,8 @@ const Unit = ({
     setSelected,
     setEditing,
     viewing,
-    updateUnitValue
+    updateUnitValue,
+    autoSort
 }) => {
 
     const setSelectedStopEditing = (clickedUnit) => {
@@ -40,6 +41,7 @@ const Unit = ({
             className="Unit"
             style={active ? {borderColor: 'red'} : {}  }
         >
+        {!autoSort && 
             <div className="Arrows">
                 {values.position !== 0 ? (
                     <i className="fa-solid fa-caret-up" onClick={() => move(values.position, -1)}></i>
@@ -49,27 +51,28 @@ const Unit = ({
                     <i className="fa-solid fa-caret-down" onClick={() => move(values.position, 1)}></i>
                 ) : <i></i>}
             </div>
-            <div className="Left">
-                {/* <div>{values.left.name}</div>
-                <div>{values.left.value}{values.left.max ? '/' + values.left.max : ''}</div> */}
-                <EditableValue
-                    property={values.left.name}
-                    value={values.left.value}
-                    updateUnitValue={updateUnitValue}
-                    position={values.position}
-                    path={'left'}
-                />
-                            </div>
-            <div className="Center">
-                <div className="NameAndEdit">
-                    <span 
-                        className="Name" 
-                        onClick={() => setSelectedStopEditing(values)}
-                        style={(viewing) ? {color: 'purple'} : {} }
-                    >
-                        {values.name}&nbsp;
-                    </span>
-                </div>
+        }
+        <div className="Left">
+            {/* <div>{values.left.name}</div>
+            <div>{values.left.value}{values.left.max ? '/' + values.left.max : ''}</div> */}
+            <EditableValue
+                property={values.left.name}
+                value={values.left.value}
+                updateUnitValue={updateUnitValue}
+                position={values.position}
+                path={'left'}
+            />
+        </div>
+        <div className="Center">
+            <div className="NameAndEdit">
+                <span 
+                    className="Name" 
+                    onClick={() => setSelectedStopEditing(values)}
+                    style={(viewing) ? {color: 'purple'} : {} }
+                >
+                    {values.name}&nbsp;
+                </span>
+            </div>
                 <div className="CenterOtherValues">
                     {values.otherValues.map((value) => {
                         return(
@@ -93,13 +96,14 @@ const Unit = ({
                     updateUnitValue={updateUnitValue}
                     position={values.position}
                     path={'right'}
+                    showModBox
                 />
             </div>
-            {/* <ValueEdit
-                property={"Name"}
-                value={"Warrior"}
-                setValue={setValue}
-             /> */}
+        {/* <ValueEdit
+            property={"Name"}
+            value={"Warrior"}
+            setValue={setValue}
+            /> */}
         </div>
     )
 }

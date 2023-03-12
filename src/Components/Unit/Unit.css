@@ -3,11 +3,11 @@
     height: 9em;
     display:flex;
     justify-content: space-around;
-    border-style: solid;
+    /* border-style: solid;
     border-width: .1em;
     padding: .2em;
     margin: .2em;
-    color: white;
+    color: black; */
 }
 
 .keyValue {
@@ -17,7 +17,8 @@
 .Arrows {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    justify-content: center;
     min-width: 3em;
 }
 
@@ -34,7 +35,7 @@
     /* border-width: 1px;
     border-color: black;
     border-style: solid; */
-    background-color: #2e3036;
+    background-color: white;
 }
 
 .Center {
@@ -82,5 +83,5 @@
     /* border-width: 1px;
     border-color: black;
     border-style: solid; */
-    background-color: #2e3036;
+    background-color: white;
 }

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import Queue from "../Queue"
 import Details from "../Details"
 import Menu from "../Menu"
-import ValueEdit from "../ValueEdit"
-import Test from "../Test"
+import Header from "../Header"
 import "./Main.css"
 
 
@@ -22,53 +21,6 @@ const Main = (
     const [ selected, setSelected ] = useState(); // unit/note that is clicked on/full data
     const [ active, setActive] = useState(0); // the position of the unit who's turn it is (red border)
     const [ editing, setEditing ] = useState(false); // whether or not the main editor is open
-    
-
-
-    // const getValueFromMidi = (CC, min, max) => {
-    //     const midiIndex = midiValues.findIndex(obj => obj?.CC == CC);
-    //     if (!midiValues[midiIndex]) {
-    //         return min;
-    //     }
-    //     const input = (midiValues[midiIndex].value / 127) ?? 0;
-    //     const output = lerp(min, max, input)
-    //     return parseInt(output);
-    // }
-
-
-    // function lerp (start, end, amt){
-    //     return (1-amt)*start+amt*end
-    //     }
-
-
-
-    // function onMIDISuccess(midiAccess) {
-    //     var inputs = midiAccess.inputs;
-    //     for (var input of midiAccess.inputs.values())
-    //         input.onmidimessage = getMIDIMessage;
-    // }
-    // function onMIDIFailure() {
-    //     console.log('Could not access your MIDI devices.');
-    // }
-
-    
-    
-
-    // function getMIDIMessage(midiMessage) {
-    //     const data = {
-    //         'CC': midiMessage?.data[1],
-    //         'value': midiMessage?.data[2],
-    //     }
-    //     setMidiMessage(data)
-    // }
-
-
-
-
-
-
-
-
 
     const saveHTML = (newHTML) => {
         // update the unitsArray value with the passed data for the selected unit
@@ -77,7 +29,7 @@ const Main = (
         newItem.details = newHTML
 
 
-        const newItems = []
+    const newItems = []
         unitsArray.forEach((x, index) => {
             if (index === selected?.position) {
                 newItems.push(newItem);
@@ -105,31 +57,30 @@ const Main = (
     }
 
     return (
-        <div className="Main">
-            <Test 
-            />
-            <Menu
-            />
-            <Queue 
-                setSelected={setSelected}
-                unitsArray={unitsArray}
-                setUnitsArray={setUnitsArray}
-                setEditing={setEditing}
-                active={active}
-                setActive={setActive}
-                selected={selected}
-                updateUnitValue={updateUnitValue}
-            />
-            <Details 
-                saveHTML={saveHTML}
-                editing={editing}
-                setEditing={setEditing}
-                selected={selected}
-                name={unitsArray[selected?.position]?.name}
-                active={active}
-            />
-            
-
+        <div>
+            <Header/>
+            <div className="Main">
+                <Menu
+                />
+                <Queue 
+                    setSelected={setSelected}
+                    unitsArray={unitsArray}
+                    setUnitsArray={setUnitsArray}
+                    setEditing={setEditing}
+                    active={active}
+                    setActive={setActive}
+                    selected={selected}
+                    updateUnitValue={updateUnitValue}
+                />
+                <Details 
+                    saveHTML={saveHTML}
+                    editing={editing}
+                    setEditing={setEditing}
+                    selected={selected}
+                    name={unitsArray[selected?.position]?.name}
+                    active={active}
+                />
+            </div>
         </div>
     )
 }

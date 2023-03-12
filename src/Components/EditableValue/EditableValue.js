@@ -1,11 +1,8 @@
-import React, { useState, useEffect, Component } from "react";
-import parse from 'html-react-parser';
-import MDEditor from '@uiw/react-md-editor';
+import React, { useState, useEffect } from "react";
 import ValueEdit from "../ValueEdit"
 
 
 import "./EditableValue.css"
-var md = require('markdown-it')();
 
 
 const EditableValue = ({
@@ -15,13 +12,13 @@ const EditableValue = ({
     updateUnitValue,
     position,
     path,
+    showModBox,
 }) => {
     
     const [formValue, setFormValue] = useState(value)
     const [editingSingle, setEditingSingle] = useState(false)
 
     useEffect(() => {
-        // console.log(formValue)
     }, [formValue])
 
 
@@ -42,6 +39,7 @@ const EditableValue = ({
                     position={position}
                     path={path}
                     setEditingSingle={setEditingSingle}
+                    showModBox={showModBox}
                 />
             
         }

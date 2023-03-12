@@ -2,16 +2,22 @@ import React, { useState, useEffect } from "react";
 import "./Menu.css"
 
 
-const Main = ({
+const Menu = ({
 }) => {
-    const [ data, setData ] = useState('');
+    const [ data, setData ] = useState([{label: "Encounters"}, {label: "Creatures"}, {label: "Items"}]);
 
     return (
         <div className="Menu">
-            Hi I'm a menu 👋
+            {(data &&
+                data.map(x => {
+                    return(
+                        <div>{x.label}</div>
+                    )
+                })
+            )}
         </div>
     )
 }
 
 
-export default Main;
+export default Menu;
