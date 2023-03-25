@@ -13,15 +13,20 @@ import EditableValue from "../EditableValue";
 //ReactDOM.render(element, document.body)
 
 const Unit = ({
+    inEncounter,
     values,
     move,
-    active,
+    //active,
     last,
     setSelected,
     setEditing,
     viewing,
     updateUnitValue,
-    autoSort
+    autoSort,
+    deleteUnit,
+    saveUnit,
+    allUnits,
+    updateUnitArray,
 }) => {
 
     const setSelectedStopEditing = (clickedUnit) => {
@@ -46,11 +51,8 @@ const Unit = ({
 
 
     return (
-        <div 
-            className="Unit"
-            style={active ? {borderColor: 'red'} : {}  }
-        >
-        {!autoSort && 
+        <div className="Unit">
+        {!autoSort && inEncounter &&
             <div className="Arrows">
                 {values.position !== 0 ? (
                     <i className="fa-solid fa-caret-up" onClick={() => move(values.position, -1)}></i>
@@ -62,15 +64,15 @@ const Unit = ({
             </div>
         }
         <div className="Left">
-            {/* <div>{values.left.name}</div>
-            <div>{values.left.value}{values.left.max ? '/' + values.left.max : ''}</div> */}
-            <EditableValue
-                property={values.left.name}
-                value={values.left.value}
-                updateUnitValue={updateUnitValue}
-                position={values.position}
-                path={'left'}
-            />
+            {inEncounter &&
+                <EditableValue
+                    property={values.left.name}
+                    value={values.left.value}
+                    updateUnitValue={updateUnitValue}
+                    position={values.position}
+                    path={'left'}
+                />
+            }
         </div>
         <div className="Center">
             <div className="NameAndEdit">
@@ -81,6 +83,19 @@ const Unit = ({
                 >
                     {values.name}&nbsp;
                 </span>
+                {/* if not in encounter, show save JSON button */}
+                {!inEncounter &&
+                    <i className="fa-solid fa-download" onClick={() => downloadUnitJSON()}></i>
+                }
+                {/* if not in encounter, show delete button */}
+                {!inEncounter &&
+                    <i className="fa-solid fa-trash" onClick={() => deleteUnit(values.position)}></i>
+                }
+                {/* if not in encounter, show save button */}
+                {!inEncounter &&
+                    <i className="fa-solid fa-save" onClick={() => saveUnit(values)}></i>
+                }
+                
             </div>
                 <div className="CenterOtherValues">
                     {values.otherValues.map((value) => {
@@ -96,17 +111,29 @@ const Unit = ({
                 </div>
             </div>
             <div className="Right">
-                {/* <div>{values.right.name}</div>
-                <div>{values.right.value}{values.right.max ? '/' + values.right.max : ''}</div> */}
-                <EditableValue
-                    property={values.right.name}
-                    value={values.right.value}
-                    max={values.right.max}
-                    updateUnitValue={updateUnitValue}
-                    position={values.position}
-                    path={'right'}
-                    showModBox
-                />
+                {inEncounter &&
+                    <EditableValue
+                        property={values.right.name}
+                        value={values.right.value}
+                        max={values.right.max}
+                        updateUnitValue={updateUnitValue}
+                        position={values.position}
+                        path={'right'}
+                        showModBox
+                    />
+                }
+                {!inEncounter &&
+                    <EditableValue
+                        property={`Max ${values.right.name}`}
+                        value={values.right.max}
+                        updateUnitValue={updateUnitValue}
+                        updateUnitArray={updateUnitArray}
+                        position={values.position}
+                        path={'rightMax'} 
+                        unit={values}
+                        allUnits={allUnits}
+                    />
+                }
             </div>
         {/* <ValueEdit
             property={"Name"}

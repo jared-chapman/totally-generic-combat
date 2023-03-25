@@ -1,4 +1,4 @@
-import react from 'react';import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Queue from "../Queue"
 
 
@@ -15,6 +15,7 @@ const EncounterView = ({
     
         return (
             <div className="EncounterView">
+                <div>This is an encounter</div>
                 <Queue
                     setSelected={setSelected}
                     encounterUnits={encounterUnits}

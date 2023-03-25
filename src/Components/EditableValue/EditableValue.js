@@ -6,10 +6,13 @@ import "./EditableValue.css"
 
 
 const EditableValue = ({
+    unit,
+    allUnits,
     property,
     value,
     max,
     updateUnitValue,
+    updateUnitArray,
     position,
     path,
     showModBox,
@@ -20,6 +23,14 @@ const EditableValue = ({
 
     useEffect(() => {
     }, [formValue])
+
+    const newUpdateUnitValue = (value) => {
+        console.log('newUpdateUnitValue')
+        const newUnit = {...unit}
+        newUnit.right.max = value // this works but needs to be configurable
+        console.log({unit, newUnit})
+        updateUnitArray(allUnits, position, newUnit)
+    }
 
 
     return (
@@ -36,6 +47,8 @@ const EditableValue = ({
                     property={property}
                     value={value}
                     updateUnitValue={updateUnitValue}
+                    updateUnitArray={updateUnitArray}
+                    newUpdateUnitValue={newUpdateUnitValue}
                     position={position}
                     path={path}
                     setEditingSingle={setEditingSingle}

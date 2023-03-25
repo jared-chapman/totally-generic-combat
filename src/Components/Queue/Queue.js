@@ -12,8 +12,6 @@ const Queue = ({
     setSelected,
     selected,
     setEditing,
-    active,
-    setActive,
     updateUnitValue,
 }) => {
 const [isSorted, setIsSorted] = useState(false);
@@ -67,23 +65,14 @@ const move = (position, direction) => {
         }
     
     const displacedPosition = position+direction
-    if (displacedPosition === active) {
-        setActive(position)
-    }
 
 
     // update .position of moving unit and the unit it's swapping with
     // as well as the active position if applicible
     let updatedUnits = encounterUnits.map((unit) => {
         if (unit.position === position) {
-            if (unit.position === active) {
-                setActive(active + direction);
-            }
             unit.position = displacedPosition;
         } else {
-            if (unit.position === displacedPosition) {
-                unit.position = position
-            }
         }
         return unit
     })
@@ -98,16 +87,6 @@ const move = (position, direction) => {
     setEncounterUnits(updatedUnits)
 }
 
-const changePosition = (direction) => {
-    let newActive = active+direction;
-    if (newActive > encounterUnits.length-1) {
-        newActive=0;
-    }
-    if (newActive < 0) {
-        newActive = encounterUnits.length-1
-    }
-    setActive(newActive);
-}
 
 
 return (
@@ -116,9 +95,10 @@ return (
             return(
                 <Unit 
                     key={nanoid()}
+                    inEncounter
                     values={unit}
                     move={move}
-                    active={index===active ? true : false}
+                    //active={index===active ? true : false}
                     last={index===encounterUnits?.length-1 ? true : false}
                     setSelected={setSelected}
                     viewing={selected?.position===index}
@@ -128,10 +108,6 @@ return (
                 />
             )
         })}
-        <div className="ForwardPrevious">
-            <i className="fa-solid fa-backward" onClick={() => changePosition(-1)}></i>
-            <i className="fa-solid fa-forward" onClick={() => changePosition(1)}></i>
-        </div>
         <div className="options">
             {!isSorted &&
                 <button onClick={() => sortByInitiative()}>Sort By Initiative</button>

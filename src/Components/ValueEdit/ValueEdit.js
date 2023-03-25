@@ -8,6 +8,7 @@ const ValueEdit = ({
     property,
     value,
     updateUnitValue,
+    newUpdateUnitValue,
     position,
     path,
     setEditingSingle,
@@ -23,7 +24,8 @@ const ValueEdit = ({
 
     
     const update = () => {
-        updateUnitValue(position, path, parseInt(formValue))
+        //updateUnitValue(position, path, parseInt(formValue))
+        newUpdateUnitValue(parseInt(formValue))
         setEditingSingle(false)
     }
 
