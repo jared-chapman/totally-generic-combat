@@ -16,7 +16,10 @@ const ValueEdit = ({
     const [formValue, setFormValue] = useState(value)
 
     
-
+    const handleBlur = () => {
+        console.log('blur')
+        cancel();
+    };
 
     
     const update = () => {
@@ -25,6 +28,7 @@ const ValueEdit = ({
     }
 
     const cancel = () => {
+        console.log('cancel')
         setEditingSingle(false);
     }
 
@@ -43,17 +47,21 @@ const ValueEdit = ({
                     onChange={e => setFormValue(e.target.value)}
                     value={formValue}
                     placeholder={value}
+                    onBlur={handleBlur}
+                    autoFocus
                 />
                 {showModBox && (
                     <ModBox
                         formValue={formValue}
                         setFormValue={setFormValue}
+                        
                     />
                 )}
                 <div className="ConfirmCancelButtons">
-                    <i className="fa-solid fa-xmark" onClick={() => cancel()}></i>
-                    <i className="fa-solid fa-rotate-left" onClick={() => reset()}></i>
-                    <i className="fa-solid fa-check" onClick={() => update()}></i>
+                    {/* onMouseDown doesn't compete with onBlur like onClick does  */}
+                    <i className="fa-solid fa-xmark" onMouseDown={() => cancel()}></i> 
+                    <i className="fa-solid fa-rotate-left" onMouseDown={() => reset()}></i>
+                    <i className="fa-solid fa-check" onMouseDown={() => update()}></i>
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ import "../EditableValue"
 import EditableValue from "../EditableValue";
 
 
+
 //ReactDOM.render(element, document.body)
 
 const Unit = ({
@@ -33,7 +34,15 @@ const Unit = ({
         // console.log("viewing", viewing)
     },[viewing])
 
-  
+    const downloadUnitJSON = () => {
+        const element = document.createElement("a");
+        const file = new Blob([JSON.stringify(values)], {type: 'text/plain'});
+        element.href = URL.createObjectURL(file);
+        element.download = "unit.json";
+        document.body.appendChild(element); // Required for this to work in FireFox
+        element.click();
+    }
+
 
 
     return (

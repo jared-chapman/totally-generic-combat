@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Queue from "../Queue"
+import EncounterView from "../EncounterView"
 import Details from "../Details"
 import Menu from "../Menu"
 import Header from "../Header"
@@ -24,7 +24,7 @@ const Main = (
 
     const saveHTML = (newHTML) => {
         // update the unitsArray value with the passed data for the selected unit
-        // save to local storage
+        // save to local storageonClick
         const newItem = unitsArray.find(x => x.position===selected?.position)
         newItem.details = newHTML
 
@@ -62,7 +62,7 @@ const Main = (
             <div className="Main">
                 <Menu
                 />
-                <Queue 
+                <EncounterView
                     setSelected={setSelected}
                     unitsArray={unitsArray}
                     setUnitsArray={setUnitsArray}
@@ -72,6 +72,7 @@ const Main = (
                     selected={selected}
                     updateUnitValue={updateUnitValue}
                 />
+
                 <Details 
                     saveHTML={saveHTML}
                     editing={editing}

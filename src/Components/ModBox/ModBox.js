@@ -28,13 +28,7 @@ const ModBox = ({
             ></i>
             <div className="MiddleRow">
                 <i className="fa-solid fa-minus UpdateButton" onClick={() => increment(-1)}></i>
-                <input
-                    className="ModInput"
-                    name='modValue'
-                    type='text'
-                    onChange={e => setModValue(e.target.value)}
-                    placeholder={modValue}
-                />
+                <textArea value={modValue} onChange={e => setModValue(e.target.value)}></textArea>
                 <i className="fa-solid fa-plus UpdateButton" onClick={() => increment(+1)}></i>
             </div>
             <i class="fa-solid fa-skull-crossbones" 
