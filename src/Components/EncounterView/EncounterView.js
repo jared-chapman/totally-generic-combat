@@ -4,8 +4,8 @@ import Queue from "../Queue"
 
 const EncounterView = ({
     setSelected,
-    unitsArray,
-    setUnitsArray,
+    encounterUnits,
+    setEncounterUnits,
     setEditing,
     active,
     setActive,
@@ -17,8 +17,8 @@ const EncounterView = ({
             <div className="EncounterView">
                 <Queue
                     setSelected={setSelected}
-                    unitsArray={unitsArray}
-                    setUnitsArray={setUnitsArray}
+                    encounterUnits={encounterUnits}
+                    setEncounterUnits={setEncounterUnits}
                     setEditing={setEditing}
                     active={active}
                     setActive={setActive}

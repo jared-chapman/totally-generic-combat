@@ -7,8 +7,8 @@ import { nanoid } from 'nanoid'
 
 
 const Queue = ({
-    unitsArray,
-    setUnitsArray,
+    encounterUnits,
+    setEncounterUnits,
     setSelected,
     selected,
     setEditing,
@@ -21,9 +21,9 @@ const [autoSort, setAutoSort] = useState(true);
 
 useEffect(() => {
     // loop over units to see if they are sorted
-    let initiativeValue = unitsArray?.[0].left.value;
-    console.log(unitsArray)
-    for (const unit of unitsArray) {
+    let initiativeValue = encounterUnits?.[0].left.value;
+    console.log(encounterUnits)
+    for (const unit of encounterUnits) {
         console.log({checkVal:unit.left.value, initiativeValue})
         if (unit.left.value > initiativeValue) {
             setIsSorted(false);
@@ -38,10 +38,10 @@ useEffect(() => {
             }
         }
     setIsSorted(true);
-}, [unitsArray])
+}, [encounterUnits])
 
 const sortByInitiative = () => {
-    const updatedUnits = unitsArray.map(unit => unit)
+    const updatedUnits = encounterUnits.map(unit => unit)
     updatedUnits.sort(function(a,b) {
         let keyA = a.left.value;
         let keyB = b.left.value;
@@ -52,7 +52,7 @@ const sortByInitiative = () => {
     updatedUnits.forEach((unit, i) => {
         unit.position = i;
     })
-    setUnitsArray(updatedUnits);
+    setEncounterUnits(updatedUnits);
 }
 
 
@@ -61,7 +61,7 @@ const move = (position, direction) => {
     // AKA set it's position value to + or - current
     if (
         (position === 0 && direction === -1) || 
-        (position === unitsArray?.length-1 && direction === 1)) {
+        (position === encounterUnits?.length-1 && direction === 1)) {
             console.log('you cant do that')
             return
         }
@@ -74,7 +74,7 @@ const move = (position, direction) => {
 
     // update .position of moving unit and the unit it's swapping with
     // as well as the active position if applicible
-    let updatedUnits = unitsArray.map((unit) => {
+    let updatedUnits = encounterUnits.map((unit) => {
         if (unit.position === position) {
             if (unit.position === active) {
                 setActive(active + direction);
@@ -95,16 +95,16 @@ const move = (position, direction) => {
         if (keyA > keyB) return 1;
         return 0;
     })
-    setUnitsArray(updatedUnits)
+    setEncounterUnits(updatedUnits)
 }
 
 const changePosition = (direction) => {
     let newActive = active+direction;
-    if (newActive > unitsArray.length-1) {
+    if (newActive > encounterUnits.length-1) {
         newActive=0;
     }
     if (newActive < 0) {
-        newActive = unitsArray.length-1
+        newActive = encounterUnits.length-1
     }
     setActive(newActive);
 }
@@ -112,14 +112,14 @@ const changePosition = (direction) => {
 
 return (
     <div className="Queue">
-        {unitsArray?.map(( unit, index ) => {
+        {encounterUnits?.map(( unit, index ) => {
             return(
                 <Unit 
                     key={nanoid()}
                     values={unit}
                     move={move}
                     active={index===active ? true : false}
-                    last={index===unitsArray?.length-1 ? true : false}
+                    last={index===encounterUnits?.length-1 ? true : false}
                     setSelected={setSelected}
                     viewing={selected?.position===index}
                     setEditing={setEditing}
