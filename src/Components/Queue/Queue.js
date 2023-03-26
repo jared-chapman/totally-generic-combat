@@ -13,6 +13,7 @@ const Queue = ({
     selected,
     setEditing,
     updateUnitValue,
+    updateUnitArray,
 }) => {
 const [isSorted, setIsSorted] = useState(false);
 const [autoSort, setAutoSort] = useState(true);
@@ -104,6 +105,7 @@ return (
                     viewing={selected?.position===index}
                     setEditing={setEditing}
                     updateUnitValue={updateUnitValue}
+                    updateUnitArray={updateUnitArray}
                     autoSort={autoSort}
                 />
             )

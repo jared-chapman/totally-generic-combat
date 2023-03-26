@@ -24,7 +24,15 @@ const EditableValue = ({
     useEffect(() => {
     }, [formValue])
 
-    const newUpdateUnitValue = (value) => {
+    useEffect(() => {
+        console.log('property', property)
+    }, [property]);
+
+    useEffect(() => {
+        console.log('path', path)
+        }, [path]);
+
+    const newUpdateUnitValue = (property, value) => {
         console.log('newUpdateUnitValue')
         const newUnit = {...unit}
         newUnit.right.max = value // this works but needs to be configurable

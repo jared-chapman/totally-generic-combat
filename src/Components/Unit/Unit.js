@@ -117,6 +117,7 @@ const Unit = ({
                         value={values.right.value}
                         max={values.right.max}
                         updateUnitValue={updateUnitValue}
+                        updateUnitArray={updateUnitArray}
                         position={values.position}
                         path={'right'}
                         showModBox
