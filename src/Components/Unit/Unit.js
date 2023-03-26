@@ -65,23 +65,14 @@ const Unit = ({
 
     return (
         <div className="Unit">
-        {!autoSort && inEncounter &&
-            <div className="Arrows">
-                {values.position !== 0 ? (
-                    <i className="fa-solid fa-caret-up" onClick={() => move(values.position, -1)}></i>
-                ) : <i></i>}
-                
-                {!last ? (
-                    <i className="fa-solid fa-caret-down" onClick={() => move(values.position, 1)}></i>
-                ) : <i></i>}
-            </div>
-        }
         <div className="Left">
             {/* {inEncounter &&
                 <EditableValue
-                    property={values.left.name}
-                    value={values.left.value}
-                    updateUnitValue={updateUnitValue}
+                    unit={values}
+                    property={'Initiative'}
+                    value={values.initiative}
+                    // updateUnitValue={updateUnitValue}
+                    updateUnitArray={updateUnitArray}
                     position={values.position}
                     path={'left'}
                     updateFunction={newUpdateUnitValue}
@@ -145,7 +136,6 @@ const Unit = ({
                         updateUnitValue={updateUnitValue}
                         updateUnitArray={updateUnitArray}
                         position={values.position}
-                        path={'right'}
                         showModBox
                         updateFunction={newUpdateUnitValue}
 

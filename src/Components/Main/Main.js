@@ -19,7 +19,7 @@ const Main = (
 
 ) => {
     const [ encounterUnits, setEncounterUnits ] = useState(items); // array of all units/full data
-    const [creatures, setCreatures] = useState(testUnits);    
+    const [ creatures, setCreatures ] = useState(testUnits);    
     const [ selected, setSelected ] = useState(); // unit/note that is clicked on/full data
     const [ active, setActive] = useState(0); // the position of the unit who's turn it is (red border)
     const [ editing, setEditing ] = useState(false); // whether or not the main editor is open
@@ -63,7 +63,7 @@ const Main = (
     const updateUnitArray = (unitArray, position, unit) => {
         // update the unitArray with the passed unit at the passed position
         // save to local storage
-        console.log('updateUnitArray')
+        console.log('updateUnitArray', {unitArray: unitArray, position, unit});
         const newItems = []
         unitArray.forEach((x, index) => {
             if (index === position) {
@@ -86,6 +86,9 @@ const Main = (
         //ls.set('units', newUnits)
     }
 
+    useEffect(() => {
+        console.log('encounterUnits', encounterUnits)
+    }, [encounterUnits])
 
 
     const setValue = (x) => {
