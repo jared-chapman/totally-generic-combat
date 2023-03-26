@@ -13,6 +13,7 @@ const Queue = ({
     selected,
     setEditing,
     updateUnitValue,
+    updateUnitArray,
 }) => {
 const [isSorted, setIsSorted] = useState(false);
 const [autoSort, setAutoSort] = useState(true);
@@ -95,7 +96,7 @@ return (
             return(
                 <Unit 
                     key={nanoid()}
-                    inEncounter
+                    //inEncounter
                     values={unit}
                     move={move}
                     //active={index===active ? true : false}
@@ -105,6 +106,9 @@ return (
                     setEditing={setEditing}
                     updateUnitValue={updateUnitValue}
                     autoSort={autoSort}
+                    allUnits={encounterUnits}
+                    updateUnitArray={updateUnitArray}
+
                 />
             )
         })}

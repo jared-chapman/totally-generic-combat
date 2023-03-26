@@ -48,6 +48,19 @@ const Unit = ({
         element.click();
     }
 
+    const newUpdateUnitValue = (value, path, index=null) => {
+        console.log('newUpdateUnitValue', {value, path, index})
+        //console.log({value, max, path})
+        const newUnit = {...values}
+        //newUnit.right.max = value // this works but needs to be configurable
+        if (index) {
+            const newValue = {name: newUnit[path][index].name, value};
+            console.log('newValue', newValue)
+            newUnit[path][index] = newValue
+        }
+        console.log({values, newUnit})
+        updateUnitArray(allUnits, values.position, newUnit)
+    }
 
 
     return (
@@ -64,15 +77,16 @@ const Unit = ({
             </div>
         }
         <div className="Left">
-            {inEncounter &&
+            {/* {inEncounter &&
                 <EditableValue
                     property={values.left.name}
                     value={values.left.value}
                     updateUnitValue={updateUnitValue}
                     position={values.position}
                     path={'left'}
+                    updateFunction={newUpdateUnitValue}
                 />
-            }
+            } */}
         </div>
         <div className="Center">
             <div className="NameAndEdit">
@@ -98,31 +112,46 @@ const Unit = ({
                 
             </div>
                 <div className="CenterOtherValues">
-                    {values.otherValues.map((value) => {
+                    {values.otherValues.map((value, index) => {
                         return(
                             <div key={nanoid()}>
-                                <div className="keyValue">
+                                {/* <div className="keyValue">
                                     <div> {value.name}:&nbsp; </div>
                                     <div> {value.value} </div>
-                                </div>
+                                </div> */}
+                                <EditableValue
+                                    property={value.name}
+                                    value={value.value}
+                                    //updateUnitValue={updateUnitValue}
+                                    //updateUnitArray={updateUnitArray}
+                                    //position={values.position}
+                                    path={'otherValues'}
+                                    index={index}
+                                    //showModBox
+                                    inline
+                                    updateFunction={newUpdateUnitValue}
+                                />
                             </div>
                         )
                     })}
                 </div>
             </div>
             <div className="Right">
-                {inEncounter &&
-                    <EditableValue
+                {/* {inEncounter && */}
+                    {/* <EditableValue
                         property={values.right.name}
                         value={values.right.value}
                         max={values.right.max}
                         updateUnitValue={updateUnitValue}
+                        updateUnitArray={updateUnitArray}
                         position={values.position}
                         path={'right'}
                         showModBox
-                    />
-                }
-                {!inEncounter &&
+                        updateFunction={newUpdateUnitValue}
+
+                    /> */}
+                {/* } */}
+                {/* {!inEncounter &&
                     <EditableValue
                         property={`Max ${values.right.name}`}
                         value={values.right.max}
@@ -132,8 +161,10 @@ const Unit = ({
                         path={'rightMax'} 
                         unit={values}
                         allUnits={allUnits}
+                        updateFunction={newUpdateUnitValue}
+
                     />
-                }
+                } */}
             </div>
         {/* <ValueEdit
             property={"Name"}

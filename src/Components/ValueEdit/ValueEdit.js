@@ -11,8 +11,10 @@ const ValueEdit = ({
     newUpdateUnitValue,
     position,
     path,
-    setEditingSingle,
+    setEditing,
     showModBox,
+    setNewValue,
+    updateValue
 }) => {
     const [formValue, setFormValue] = useState(value)
 
@@ -25,13 +27,15 @@ const ValueEdit = ({
     
     const update = () => {
         //updateUnitValue(position, path, parseInt(formValue))
-        newUpdateUnitValue(parseInt(formValue))
-        setEditingSingle(false)
+        //newUpdateUnitValue(parseInt(formValue))
+        //setNewValue(path)
+        updateValue(formValue)
+        setEditing(false)
     }
 
     const cancel = () => {
         console.log('cancel')
-        setEditingSingle(false);
+        setEditing(false);
     }
 
     const reset = () => {
