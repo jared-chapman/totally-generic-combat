@@ -20,11 +20,11 @@ const [autoSort, setAutoSort] = useState(true);
 
 useEffect(() => {
     // loop over units to see if they are sorted
-    let initiativeValue = encounterUnits?.[0].left.value;
+    let initiativeValue = encounterUnits?.[0]?.initiative;
     console.log(encounterUnits)
     for (const unit of encounterUnits) {
-        console.log({checkVal:unit.left.value, initiativeValue})
-        if (unit.left.value > initiativeValue) {
+        console.log({checkVal:unit.initiative, initiativeValue})
+        if (unit.initiative > initiativeValue) {
             setIsSorted(false);
             console.log("FAIL")
             // if units are not sorted, sort them
@@ -33,17 +33,17 @@ useEffect(() => {
                 }
                 return;
             } else {
-                initiativeValue = unit.left.value
+                initiativeValue = unit.initiative
             }
         }
     setIsSorted(true);
 }, [encounterUnits])
 
 const sortByInitiative = () => {
-    const updatedUnits = encounterUnits.map(unit => unit)
+    const updatedUnits = encounterUnits?.map(unit => unit)
     updatedUnits.sort(function(a,b) {
-        let keyA = a.left.value;
-        let keyB = b.left.value;
+        let keyA = a.initiative;
+        let keyB = b.initiative;
         if (keyA < keyB) return 1;
         if (keyA > keyB) return -1;
         return 0;
@@ -70,7 +70,7 @@ const move = (position, direction) => {
 
     // update .position of moving unit and the unit it's swapping with
     // as well as the active position if applicible
-    let updatedUnits = encounterUnits.map((unit) => {
+    let updatedUnits = encounterUnits?.map((unit) => {
         if (unit.position === position) {
             unit.position = displacedPosition;
         } else {
@@ -88,10 +88,15 @@ const move = (position, direction) => {
     setEncounterUnits(updatedUnits)
 }
 
+useEffect(() => {
+    console.log("encounterUnits changed",encounterUnits)
+}, [encounterUnits])
+
 
 
 return (
     <div className="Queue">
+        {console.log(encounterUnits)}
         {encounterUnits?.map(( unit, index ) => {
             return(
                 <Unit 
@@ -99,14 +104,14 @@ return (
                     inEncounter
                     values={unit}
                     move={move}
-                    //active={index===active ? true : false}
                     last={index===encounterUnits?.length-1 ? true : false}
                     setSelected={setSelected}
                     viewing={selected?.position===index}
                     setEditing={setEditing}
-                    updateUnitValue={updateUnitValue}
+                    // updateUnitValue={updateUnitValue}
                     updateUnitArray={updateUnitArray}
                     autoSort={autoSort}
+                    allUnits={encounterUnits}
                 />
             )
         })}

@@ -48,29 +48,24 @@ const Unit = ({
         element.click();
     }
 
+    useEffect(() => {
+        console.log("values", values)
+    },[values])
 
 
     return (
         <div className="Unit">
-        {!autoSort && inEncounter &&
-            <div className="Arrows">
-                {values.position !== 0 ? (
-                    <i className="fa-solid fa-caret-up" onClick={() => move(values.position, -1)}></i>
-                ) : <i></i>}
-                
-                {!last ? (
-                    <i className="fa-solid fa-caret-down" onClick={() => move(values.position, 1)}></i>
-                ) : <i></i>}
-            </div>
-        }
         <div className="Left">
             {inEncounter &&
                 <EditableValue
-                    property={values.left.name}
-                    value={values.left.value}
-                    updateUnitValue={updateUnitValue}
+                    unit={values}
+                    property={'Initiative'}
+                    value={values.initiative}
+                    // updateUnitValue={updateUnitValue}
+                    updateUnitArray={updateUnitArray}
                     position={values.position}
-                    path={'left'}
+                    path={'initiative'}
+                    allUnits={allUnits}
                 />
             }
         </div>
@@ -113,13 +108,13 @@ const Unit = ({
             <div className="Right">
                 {inEncounter &&
                     <EditableValue
-                        property={values.right.name}
-                        value={values.right.value}
-                        max={values.right.max}
+                        property={'HP'}
+                        value={values.hp}
+                        max={values.maxHp}
                         updateUnitValue={updateUnitValue}
                         updateUnitArray={updateUnitArray}
+                        allUnits={allUnits}
                         position={values.position}
-                        path={'right'}
                         showModBox
                     />
                 }

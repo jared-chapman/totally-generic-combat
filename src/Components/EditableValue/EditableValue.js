@@ -32,11 +32,11 @@ const EditableValue = ({
         console.log('path', path)
         }, [path]);
 
-    const newUpdateUnitValue = (property, value) => {
+    const newUpdateUnitValue = (path, value) => {
         console.log('newUpdateUnitValue')
         const newUnit = {...unit}
-        newUnit.right.max = value // this works but needs to be configurable
-        console.log({unit, newUnit})
+        newUnit[path] = value // this works but needs to be configurable
+        console.log({unit, newUnit, path, value})
         updateUnitArray(allUnits, position, newUnit)
     }
 

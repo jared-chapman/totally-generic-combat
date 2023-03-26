@@ -11,6 +11,7 @@ const EncounterView = ({
     setActive,
     selected,
     updateUnitValue,
+    updateUnitArray,
 }) => {
     
         return (
@@ -25,6 +26,7 @@ const EncounterView = ({
                     setActive={setActive}
                     selected={selected}
                     updateUnitValue={updateUnitValue}
+                    updateUnitArray={updateUnitArray}
                 />
             </div>
         )

@@ -24,8 +24,7 @@ const ValueEdit = ({
 
     
     const update = () => {
-        //updateUnitValue(position, path, parseInt(formValue))
-        newUpdateUnitValue(parseInt(formValue))
+        newUpdateUnitValue(path, parseInt(formValue))
         setEditingSingle(false)
     }
 
