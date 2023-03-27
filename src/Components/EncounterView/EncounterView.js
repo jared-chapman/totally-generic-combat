@@ -12,6 +12,7 @@ const EncounterView = ({
     selected,
     updateUnitValue,
     updateUnitArray,
+    lsSave,
 }) => {
     
         return (
@@ -27,6 +28,7 @@ const EncounterView = ({
                     selected={selected}
                     updateUnitValue={updateUnitValue}
                     updateUnitArray={updateUnitArray}
+                    lsSave={lsSave}
                 />
             </div>
         )

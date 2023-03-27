@@ -6,44 +6,19 @@ import "./EditableValue.css"
 
 
 const EditableValue = ({
-    unit,
-    //allUnits,
-    property,
+    name,
     value,
     max,
-    //updateUnitValue,
-    //updateUnitArray,
-    //position,
     updateFunction,
     newUpdateUnitValue,
+    showModBox,
+    inline,
     path,
     index,
-    showModBox,
-    inline
 }) => {
     
-    const [formValue, setFormValue] = useState(value)
-    const [editing, setEditing] = useState(false)
-    const [newValue, setNewValue] = useState(null)
+const [editing, setEditing] = useState(false)
 
-    useEffect(() => {
-    }, [formValue])
-
-    
-
-    useEffect(() => {
-        console.log({value, max, path, index})
-    }, [value, max, path])
-
-
-// useEffect(() => {
-//     console.log({newValue})
-//     updateFunction(newValue, path)
-// }, [newValue])
-const updateValue = value => {
-    console.log({value})
-    updateFunction(value, path, index)
-}
 
     return (
         <div 
@@ -51,28 +26,25 @@ const updateValue = value => {
         >
             {editing ? 
                 <ValueEdit 
-                    property={property}
+                    name={name}
                     value={value}
-                    //updateUnitValue={updateUnitValue}
-                    //updateUnitArray={updateUnitArray}
                     newUpdateUnitValue={newUpdateUnitValue}
-                    //position={position}
-                    //path={path}
                     setEditing={setEditing}
                     showModBox={showModBox}
-                    setNewValue={setNewValue}
-                    updateValue={updateValue}
+                    updateFunction={updateFunction}
+                    path={path}
+                    index={index}
                 />
-                :
+            :
                 inline ?
-                <div onClick={() => setEditing(!editing)}>
-                    <div>{`${property}: ${value}${max ? ` / ${max}` : ''}`}</div>
-                </div>
+                    <div onClick={() => setEditing(!editing)}>
+                        <div>{`${name}: ${value}${max ? ` / ${max}` : ''}`}</div>
+                    </div>
                 :
-                <div onClick={() => setEditing(!editing)}>
-                    <div >{property}</div>
-                    <div>{value}{max ? ` / ${max}` : null}</div>
-                </div>
+                    <div onClick={() => setEditing(!editing)}>
+                        <div >{name}</div>
+                        <div>{value}{max ? ` / ${max}` : null}</div>
+                    </div>
         }
         </div>
     )

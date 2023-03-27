@@ -10,34 +10,26 @@ import EditableValue from "../EditableValue";
 
 
 
-//ReactDOM.render(element, document.body)
 
 const Unit = ({
     inEncounter,
     values,
-    move,
-    //active,
-    last,
     setSelected,
     setEditing,
     viewing,
-    updateUnitValue,
-    autoSort,
     deleteUnit,
     saveUnit,
     allUnits,
     updateUnitArray,
 }) => {
 
+    const thisUnit = values;
+
     const setSelectedStopEditing = (clickedUnit) => {
         setEditing(false)
         setSelected(clickedUnit)
-        // console.log("clickedUnit", clickedUnit)
     }
 
-    useEffect(() => {
-        // console.log("viewing", viewing)
-    },[viewing])
 
     const downloadUnitJSON = () => {
         const element = document.createElement("a");
@@ -49,35 +41,29 @@ const Unit = ({
     }
 
     const newUpdateUnitValue = (value, path, index=null) => {
-        console.log('newUpdateUnitValue', {value, path, index})
-        //console.log({value, max, path})
-        const newUnit = {...values}
-        //newUnit.right.max = value // this works but needs to be configurable
-        if (index) {
+        console.log({value, path, index})
+        const newUnit = {...thisUnit}
+        if (index !== null) {
             const newValue = {name: newUnit[path][index].name, value};
-            console.log('newValue', newValue)
             newUnit[path][index] = newValue
+        } else {
+            newUnit[path] = value
         }
-        console.log({values, newUnit})
-        updateUnitArray(allUnits, values.position, newUnit)
+        console.log('newUnit', newUnit)
+        updateUnitArray(allUnits, thisUnit.position, newUnit)
     }
 
 
     return (
         <div className="Unit">
         <div className="Left">
-            {/* {inEncounter &&
                 <EditableValue
-                    unit={values}
-                    property={'Initiative'}
+                    name={'Initiative'}
                     value={values.initiative}
-                    // updateUnitValue={updateUnitValue}
-                    updateUnitArray={updateUnitArray}
-                    position={values.position}
-                    path={'left'}
+                    path={'initiative'}
+                    index={null}
                     updateFunction={newUpdateUnitValue}
                 />
-            } */}
         </div>
         <div className="Center">
             <div className="NameAndEdit">
@@ -106,19 +92,11 @@ const Unit = ({
                     {values.otherValues.map((value, index) => {
                         return(
                             <div key={nanoid()}>
-                                {/* <div className="keyValue">
-                                    <div> {value.name}:&nbsp; </div>
-                                    <div> {value.value} </div>
-                                </div> */}
                                 <EditableValue
-                                    property={value.name}
+                                    name={value.name}
                                     value={value.value}
-                                    //updateUnitValue={updateUnitValue}
-                                    //updateUnitArray={updateUnitArray}
-                                    //position={values.position}
                                     path={'otherValues'}
                                     index={index}
-                                    //showModBox
                                     inline
                                     updateFunction={newUpdateUnitValue}
                                 />
@@ -130,7 +108,7 @@ const Unit = ({
             <div className="Right">
                 {/* {inEncounter && */}
                     {/* <EditableValue
-                        property={values.right.name}
+                        name={values.right.name}
                         value={values.right.value}
                         max={values.right.max}
                         updateUnitValue={updateUnitValue}
@@ -143,7 +121,7 @@ const Unit = ({
                 {/* } */}
                 {/* {!inEncounter &&
                     <EditableValue
-                        property={`Max ${values.right.name}`}
+                        name={`Max ${values.right.name}`}
                         value={values.right.max}
                         updateUnitValue={updateUnitValue}
                         updateUnitArray={updateUnitArray}

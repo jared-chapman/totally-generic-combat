@@ -5,36 +5,27 @@ import "./ValueEdit.css"
 
 
 const ValueEdit = ({
-    property,
+    name,
     value,
-    updateUnitValue,
-    newUpdateUnitValue,
-    position,
-    path,
     setEditing,
     showModBox,
-    setNewValue,
-    updateValue
+    updateFunction,
+    path,
+    index,
 }) => {
     const [formValue, setFormValue] = useState(value)
 
     
     const handleBlur = () => {
-        console.log('blur')
         cancel();
     };
-
     
     const update = () => {
-        //updateUnitValue(position, path, parseInt(formValue))
-        //newUpdateUnitValue(parseInt(formValue))
-        //setNewValue(path)
-        updateValue(formValue)
+        updateFunction(formValue, path, index)
         setEditing(false)
     }
 
     const cancel = () => {
-        console.log('cancel')
         setEditing(false);
     }
 
@@ -45,7 +36,7 @@ const ValueEdit = ({
     return (
         <div className="PopupContainer">
             <div className = "PopupInputs">
-                <div className="PopupProperty">{property}</div>
+                <div className="PopupProperty">{name}</div>
                 <input
                     className="PopupValue"
                     name='formValue'

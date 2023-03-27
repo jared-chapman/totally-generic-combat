@@ -36,7 +36,6 @@ const Test = ({
     const getValueFromMidi = (CC, min, max) => {
         const midiIndex = midiValues?.findIndex(obj => obj?.CC == CC);
         if (midiIndex === -1) {
-            console.log("min")
             return min;
         }
         const input = (midiValues[midiIndex]?.value / 127) ?? 0;

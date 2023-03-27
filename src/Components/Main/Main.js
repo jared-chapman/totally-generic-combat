@@ -11,8 +11,7 @@ import testUnits from "../../testItems"
 
 var ls = require('local-storage');
 
-const lsItems = ls.get('units')
-console.log(lsItems)
+const lsItems = ls.get('encounter')
 const items = lsItems ?? testUnits
 
 const Main = (
@@ -41,11 +40,12 @@ const Main = (
             }
         })
         setEncounterUnits(newItems)
-        ls.set('units', newItems)
+        ls.set('encounter', newItems)
     }
 
     const updateUnitValue = (position, path, value) => {
-        console.log('updateUnitValue')
+        // console.log('updateUnitValue')
+        console.log(`updateUnitValue`, {position, path, value})
         const encounterUnitsCopy = [...encounterUnits]
         if (path === 'rightMax') {
             encounterUnitsCopy.position['right'].max=value;
@@ -60,20 +60,8 @@ const Main = (
         setEncounterUnits(encounterUnitsCopy)
     }
 
-    const updateUnitArray = (unitArray, position, unit) => {
-        // update the unitArray with the passed unit at the passed position
-        // save to local storage
-        console.log('updateUnitArray', {unitArray: unitArray, position, unit});
-        const newItems = []
-        unitArray.forEach((x, index) => {
-            if (index === position) {
-                newItems.push(unit);
-            } else {
-                newItems.push(x)
-            }
-        })
-        setEncounterUnits(newItems)
-        ls.set('units', newItems)
+    const lsSave = (newItems, lsName='encounter') => {
+        ls.set(newItems, lsName)
     }
 
     const addUnit = (unit) => {
@@ -81,19 +69,14 @@ const Main = (
         // save to local storage
         const newUnits = creatures.map(x => x);
         newUnits.push(unit);
-        console.log({creatures, newUnits})
         setCreatures(newUnits)
         //ls.set('units', newUnits)
     }
 
     useEffect(() => {
-        console.log('encounterUnits', encounterUnits)
+        // console.log('encounterUnits', encounterUnits)
     }, [encounterUnits])
 
-
-    const setValue = (x) => {
-        console.log("Saved", x)
-    }
 
     return (
         <div>
@@ -112,7 +95,8 @@ const Main = (
                         setActive={setActive}
                         selected={selected}
                         updateUnitValue={updateUnitValue}
-                        updateUnitArray={updateUnitArray}
+                        lsSave={lsSave}
+                        //updateUnitArray={updateUnitArray}
                     />
                 }
                 { (view === 'Creatures') &&
@@ -123,10 +107,10 @@ const Main = (
                         setActive={setActive}
                         updateUnitValue={updateUnitValue}
                         setEditing={setEditing}
-                        updateUnitArray={updateUnitArray}
                         addUnit={addUnit}
                         creatures={creatures}
                         setCreatures={setCreatures}
+                        lsSave={lsSave}
                     />
                 }
 

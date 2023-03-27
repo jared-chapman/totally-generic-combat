@@ -12,21 +12,18 @@ const Queue = ({
     setSelected,
     selected,
     setEditing,
-    updateUnitValue,
-    updateUnitArray,
+    lsSave,
 }) => {
+
 const [isSorted, setIsSorted] = useState(false);
 const [autoSort, setAutoSort] = useState(true);
 
 useEffect(() => {
     // loop over units to see if they are sorted
     let initiativeValue = encounterUnits?.[0]?.initiative;
-    console.log(encounterUnits)
     for (const unit of encounterUnits) {
-        console.log({checkVal:unit.initiative, initiativeValue})
         if (unit.initiative > initiativeValue) {
             setIsSorted(false);
-            console.log("FAIL")
             // if units are not sorted, sort them
             if (autoSort) {
                     sortByInitiative();
@@ -54,6 +51,22 @@ const sortByInitiative = () => {
     setEncounterUnits(updatedUnits);
 }
 
+const updateUnitArray = (unitArray, position, unit) => {
+    // update the unitArray with the passed unit at the passed position
+    // save to local storage
+    const newItems = []
+    unitArray.forEach((x, index) => {
+        if (index === position) {
+            newItems.push(unit);
+        } else {
+            newItems.push(x)
+        }
+    })
+    console.log({newItems})
+    setEncounterUnits(newItems)
+    //ls.set('units', newItems)
+    lsSave('encounter', newItems);
+}
 
 const move = (position, direction) => {
     // move unit at {{position}} up or down
@@ -88,30 +101,27 @@ const move = (position, direction) => {
     setEncounterUnits(updatedUnits)
 }
 
-useEffect(() => {
-    console.log("encounterUnits changed",encounterUnits)
-}, [encounterUnits])
+// useEffect(() => {
+//     console.log("encounterUnits changed",encounterUnits)
+// }, [encounterUnits])
 
 
 
 return (
     <div className="Queue">
-        {console.log(encounterUnits)}
         {encounterUnits?.map(( unit, index ) => {
             return(
                 <Unit 
                     key={nanoid()}
-                    //inEncounter
                     values={unit}
-                    move={move}
-                    last={index===encounterUnits?.length-1 ? true : false}
                     setSelected={setSelected}
+                    last={index===encounterUnits?.length-1 ? true : false}
                     viewing={selected?.position===index}
                     setEditing={setEditing}
-                    // updateUnitValue={updateUnitValue}
                     updateUnitArray={updateUnitArray}
                     autoSort={autoSort}
                     allUnits={encounterUnits}
+                    inEncounter
                 />
             )
         })}
