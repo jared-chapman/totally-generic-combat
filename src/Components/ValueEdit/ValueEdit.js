@@ -21,7 +21,9 @@ const ValueEdit = ({
     };
     
     const update = () => {
-        updateFunction(formValue, path, index)
+        // parseInt is necessary to sort by initiative
+        // will need workaround for CR since it can be a fraction
+        updateFunction(parseInt(formValue), path, index) 
         setEditing(false)
     }
 

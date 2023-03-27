@@ -12,37 +12,25 @@ import EditableValue from "../EditableValue";
 
 
 const Unit = ({
-    inEncounter,
+    type,
     values,
     setSelected,
     setEditing,
     viewing,
-    deleteUnit,
-    saveUnit,
     allUnits,
     updateUnitArray,
+    download,
+    deleteUnit,
 }) => {
-
-    const thisUnit = values;
 
     const setSelectedStopEditing = (clickedUnit) => {
         setEditing(false)
         setSelected(clickedUnit)
     }
 
-
-    const downloadUnitJSON = () => {
-        const element = document.createElement("a");
-        const file = new Blob([JSON.stringify(values)], {type: 'text/plain'});
-        element.href = URL.createObjectURL(file);
-        element.download = "unit.json";
-        document.body.appendChild(element); // Required for this to work in FireFox
-        element.click();
-    }
-
     const newUpdateUnitValue = (value, path, index=null) => {
         console.log({value, path, index})
-        const newUnit = {...thisUnit}
+        const newUnit = {...values}
         if (index !== null) {
             const newValue = {name: newUnit[path][index].name, value};
             newUnit[path][index] = newValue
@@ -50,7 +38,7 @@ const Unit = ({
             newUnit[path] = value
         }
         console.log('newUnit', newUnit)
-        updateUnitArray(allUnits, thisUnit.position, newUnit)
+        updateUnitArray(allUnits, values.position, newUnit)
     }
 
 
@@ -75,17 +63,14 @@ const Unit = ({
                     {values.name}&nbsp;
                 </span>
                 {/* if not in encounter, show save JSON button */}
-                {!inEncounter &&
-                    <i className="fa-solid fa-download" onClick={() => downloadUnitJSON()}></i>
+                {type === 'Creatures' &&
+                    <i className="fa-solid fa-download" onClick={() => download(values)}></i>
                 }
                 {/* if not in encounter, show delete button */}
-                {!inEncounter &&
+                {type === 'Creatures' &&
                     <i className="fa-solid fa-trash" onClick={() => deleteUnit(values.position)}></i>
                 }
-                {/* if not in encounter, show save button */}
-                {!inEncounter &&
-                    <i className="fa-solid fa-save" onClick={() => saveUnit(values)}></i>
-                }
+
                 
             </div>
                 <div className="CenterOtherValues">

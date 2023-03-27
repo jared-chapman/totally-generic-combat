@@ -121,7 +121,6 @@ const testUnits = [
     {
         position: 0,
         name: "Warrior2",
-        leftName: 'Initiative',
         initiative: 8,
         hp: 9,
         maxHp: 12,
