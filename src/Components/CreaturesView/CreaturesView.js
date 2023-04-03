@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Queue from "../Queue"
 import Details from "../Details"
 import testUnits from "../../testItems"
-
+import "./CreaturesView.css";
 var ls = require('local-storage');
 
 // if (!ls.get('encounter')) {

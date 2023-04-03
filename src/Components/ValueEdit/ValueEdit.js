@@ -35,6 +35,29 @@ const ValueEdit = ({
         setFormValue(value)
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            update();
+        }
+        if (e.key === "Escape") {
+            cancel();
+        }
+    }
+
+    const handleFocus = (e) => {
+        console.log(e)
+        e.target.select();
+    }
+
+    // select text on mount
+    useEffect(() => {
+        const input = document.querySelector(".PopupValue")
+        input.select();
+    }, [])
+    
+
+
+
     return (
         <div className="PopupContainer">
             <div className = "PopupInputs">
@@ -44,10 +67,11 @@ const ValueEdit = ({
                     name='formValue'
                     type='text'
                     onChange={e => setFormValue(e.target.value)}
+                    onKeyDown={handleKeyDown}
                     value={formValue}
                     placeholder={value}
                     onBlur={handleBlur}
-                    autoFocus
+                    onFocus={handleFocus}
                 />
                 {showModBox && (
                     <ModBox

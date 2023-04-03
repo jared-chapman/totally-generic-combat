@@ -22,6 +22,8 @@ const Queue = ({
     upload,
 }) => {
 
+const [turn, setTurn] = useState(1);
+
 const sortByInitiative = (units) => {
     const updatedUnits = units?.map(unit => unit)
     updatedUnits.sort(function(a,b) {
@@ -76,6 +78,8 @@ return (
                     type={type}
                     download={download}
                     deleteUnit={deleteUnit}
+                    turn={turn}
+                    setTurn={setTurn}
                 />
             )
         })}

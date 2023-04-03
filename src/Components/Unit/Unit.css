@@ -3,6 +3,12 @@
     height: 9em;
     display:flex;
     justify-content: space-around;
+    
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    cursor: pointer;
+
+    margin: 1em;
+    
     /* border-style: solid;
     border-width: .1em;
     padding: .2em;
@@ -13,6 +19,7 @@
 .keyValue {
     display: flex;
 }
+
 
 .Arrows {
     display: flex;
@@ -39,11 +46,11 @@
 }
 
 .Center {
-
+    
     width: 27em;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-around;
     /* border-width: 1px;
     border-color: black;
     border-style: solid; */
@@ -57,6 +64,10 @@
     padding: 1.3em;
 }
 
+.CenterOtherValues>*:hover, .Left>*:hover, .Right>*:hover {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
 .CenterOtherValues>* {
     flex: 1 1 50%;
 }
@@ -68,9 +79,8 @@
 
 .Name {
     font-size: x-large;
-    cursor: pointer;
     /* border-style: solid;
-    border-color: white;
+    border-color: black;
     border-width: 1px; */
 }
 

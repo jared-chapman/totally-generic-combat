@@ -92,11 +92,7 @@ const Main = (
                         upload={upload}
                         download={download}
                     />
-                }
-                {/* fix css */}
-                <div></div>
-                <div></div>
-                
+                }              
             </div>
         </div>
     )

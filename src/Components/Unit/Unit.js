@@ -15,6 +15,8 @@ const Unit = ({
     type,
     values,
     setSelected,
+    turn,
+    setTurn,
     setEditing,
     viewing,
     allUnits,
@@ -41,9 +43,23 @@ const Unit = ({
         updateUnitArray(allUnits, values.position, newUnit)
     }
 
+    // set turn to current unit position
+    const setTurnToThisUnit = () => {
+        console.log("setTurnToThisUnit", values.position)
+        //if (type === 'encounter') {
+            setTurn(values.position)
+        //}
+    }
+
+
 
     return (
-        <div className="Unit">
+        <div 
+            className="Unit"                     
+            onClick={() => setSelectedStopEditing(values)}
+            // if it is this units turn, highlight it
+            style={(turn === values.position) ? {backgroundColor: 'lightblue'} : {} }
+        >
         <div className="Left">
                 <EditableValue
                     name={'Initiative'}
@@ -57,7 +73,6 @@ const Unit = ({
             <div className="NameAndEdit">
                 <span 
                     className="Name" 
-                    onClick={() => setSelectedStopEditing(values)}
                     style={(viewing) ? {color: 'purple'} : {} }
                 >
                     {values.name}&nbsp;

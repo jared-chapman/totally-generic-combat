@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Queue from "../Queue"
 import Details from "../Details"
+import "./EncounterView.css";
 var ls = require('local-storage');
 
 
@@ -75,9 +76,8 @@ const EncounterView = ({
     }
     
     return (
-        <div>
-            <div className="EncounterView">
-                <div>{type}</div>
+        <div className = "EncounterView">
+            <div>
                 <Queue
                     allUnits={allUnits}
                     setAllUnits={setAllUnits}
