@@ -62,6 +62,24 @@ const updateUnitArray = (unitArray, position, unit) => {
     }
 }
 
+const changeTurn = (direction) => {
+    if (direction === 'forward') {
+        if (turn < allUnits.length - 1) {
+            setTurn(turn + 1)
+        } else {
+            setTurn(0)
+        }
+    } else if (direction === 'back') {
+        if (turn > 0) {
+            setTurn(turn - 1)
+        } else {
+            setTurn(allUnits.length - 1)
+        }
+
+    }
+};
+
+
 return (
     <div className="Queue">
         {allUnits?.map(( unit, index ) => {
@@ -83,7 +101,12 @@ return (
                 />
             )
         })}
-        {/* add create new unit button */}
+        {/* create turn forward and back buttons */}
+        <div className="turnButtons">
+            <button onClick={() => changeTurn('back')}>Previous Unit</button>
+            <button onClick={() => changeTurn('forward')}>Next Unit</button>
+        </div>
+
         <div className="createUnit">
             <button
                 onClick={() => {
@@ -93,8 +116,7 @@ return (
             >
                 Create New Unit
             </button>
-            </div>
-        {/* add upload unit button */}
+        </div>
         <div className="uploadUnit">
             <button
                 onClick={() => {

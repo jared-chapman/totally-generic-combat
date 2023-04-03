@@ -58,7 +58,7 @@ const Unit = ({
             className="Unit"                     
             onClick={() => setSelectedStopEditing(values)}
             // if it is this units turn, highlight it
-            style={(turn === values.position) ? {backgroundColor: 'lightblue'} : {} }
+            style={(turn === values.position) ? {'box-shadow': 'rgba(0, 0, 0, 0.23) 0px 3px 6px, rgba(0, 0, 0, 0.55) 0px 3px 6px'} : {} }
         >
         <div className="Left">
                 <EditableValue

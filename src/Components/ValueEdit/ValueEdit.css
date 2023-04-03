@@ -73,6 +73,29 @@
 
 .ConfirmCancelButtons > * {
     color: white;
+    font-size: xx-large;
     /* margin-left: 1em;
     margin-right: 1em; */
+}
+
+.fa-xmark:hover {
+    color: red;
+}
+
+.fa-check:hover {
+    color: green;
+}
+
+.fa-rotate-left:hover {
+    color: blue;
+    rotate: -360deg;
+    transition: rotate 1s;
+}
+
+.grow { 
+    transition: all .2s ease-in-out; 
+    }
+    
+.grow:hover { 
+    transform: scale(1.4); 
 }

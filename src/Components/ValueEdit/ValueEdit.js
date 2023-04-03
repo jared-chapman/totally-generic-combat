@@ -82,9 +82,9 @@ const ValueEdit = ({
                 )}
                 <div className="ConfirmCancelButtons">
                     {/* onMouseDown doesn't compete with onBlur like onClick does  */}
-                    <i className="fa-solid fa-xmark" onMouseDown={() => cancel()}></i> 
-                    <i className="fa-solid fa-rotate-left" onMouseDown={() => reset()}></i>
-                    <i className="fa-solid fa-check" onMouseDown={() => update()}></i>
+                    <i className="fa-solid fa-xmark grow" onMouseDown={() => cancel()}></i> 
+                    <i className="fa-solid fa-rotate-left grow" onMouseDown={() => reset()}></i>
+                    <i className="fa-solid fa-check grow" onMouseDown={() => update()}></i>
                 </div>
             </div>
         </div>
