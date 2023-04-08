@@ -52,7 +52,7 @@ const updateUnitArray = (unitArray, position, unit) => {
             newItems.push(x)
         }
     })
-    if (type === 'encounter') {
+    if (type === 'Encounters') {
         const sortedUnits = sortByInitiative(newItems);
         setAllUnits(sortedUnits)
         lsSave(lsName, sortedUnits);
@@ -88,7 +88,8 @@ return (
                     key={nanoid()}
                     values={unit}
                     setSelected={setSelected}
-                    viewing={selected?.position===index}
+                    // viewing={selected?.position===index}
+                    selected={selected?.position}
                     setEditing={setEditing}
                     updateUnitArray={updateUnitArray}
                     autoSort

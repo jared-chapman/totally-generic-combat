@@ -15,16 +15,28 @@ const EditableValue = ({
     inline,
     path,
     index,
+    title,
 }) => {
     
-const [editing, setEditing] = useState(false)
+const [editing, setEditing] = useState()
+
+
+    // const rerender = () => {
+    //     console.log('rerender')
+    //     setEditing(false)
+    //     setEditing(true)
+    // }
 
 
     return (
         <div 
-        className="EditableValue"
+        className={`EditableValue`}
         >
-            {editing ? 
+            <div
+                className={`CenteredContent ${title ? 'Title' : ''}`}
+            >
+                
+                {editing ? 
                 <ValueEdit 
                     name={name}
                     value={value}
@@ -37,15 +49,30 @@ const [editing, setEditing] = useState(false)
                 />
             :
                 inline ?
-                    <div onClick={() => setEditing(!editing)}>
+                    <span onClick={(e) => {
+                        // I don't know why I need to persist the event here, but I do.
+                        e.persist();
+                        setEditing(true)
+                        e.stopPropagation();
+                    }}>
                         <div>{`${name}: ${value}${max ? ` / ${max}` : ''}`}</div>
-                    </div>
+                    </span>
                 :
-                    <div onClick={() => setEditing(!editing)}>
+                    <div onClick={(e) => {
+                        e.persist();
+                        setEditing(true)
+                        e.stopPropagation();
+                    }}>
                         <div >{name}</div>
                         <div>{value}{max ? ` / ${max}` : null}</div>
                     </div>
         }
+
+
+
+
+            </div>
+            
         </div>
     )
 }

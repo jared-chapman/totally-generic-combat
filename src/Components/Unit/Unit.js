@@ -14,16 +14,19 @@ import EditableValue from "../EditableValue";
 const Unit = ({
     type,
     values,
+    selected,
     setSelected,
     turn,
     setTurn,
     setEditing,
-    viewing,
+    //viewing,
     allUnits,
     updateUnitArray,
     download,
     deleteUnit,
 }) => {
+
+    const [viewing, setViewing] = useState(false);
 
     const setSelectedStopEditing = (clickedUnit) => {
         setEditing(false)
@@ -31,7 +34,11 @@ const Unit = ({
     }
 
     const newUpdateUnitValue = (value, path, index=null) => {
-        console.log({value, path, index})
+        // parseInt is necessary to sort by initiative
+        // will need workaround for CR since it can be a fraction
+        if (!isNaN(parseInt(value))) {
+            value = parseInt(value)
+        }
         const newUnit = {...values}
         if (index !== null) {
             const newValue = {name: newUnit[path][index].name, value};
@@ -51,14 +58,18 @@ const Unit = ({
         //}
     }
 
+    // show turn and viewing when they change
+    useEffect(() => {
+        console.log('selected', selected)
+    }, [selected])
+
+
 
 
     return (
         <div 
-            className="Unit"                     
+            className={`Unit ${selected === values.position ? 'Selected' : ''}`}
             onClick={() => setSelectedStopEditing(values)}
-            // if it is this units turn, highlight it
-            style={(turn === values.position) ? {'box-shadow': 'rgba(0, 0, 0, 0.23) 0px 3px 6px, rgba(0, 0, 0, 0.55) 0px 3px 6px'} : {} }
         >
         <div className="Left">
                 <EditableValue
@@ -71,13 +82,14 @@ const Unit = ({
         </div>
         <div className="Center">
             <div className="NameAndEdit">
-                <span 
-                    className="Name" 
-                    style={(viewing) ? {color: 'purple'} : {} }
-                >
-                    {values.name}&nbsp;
-                </span>
-                {/* if not in encounter, show save JSON button */}
+                <EditableValue
+                    
+                    value={values.name}
+                    path={'name'}
+                    index={null}
+                    updateFunction={newUpdateUnitValue}
+                    title
+                />
                 {type === 'Creatures' &&
                     <i className="fa-solid fa-download" onClick={() => download(values)}></i>
                 }

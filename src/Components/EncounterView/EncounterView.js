@@ -66,7 +66,6 @@ const EncounterView = ({
     
 
     const addUnit = (unit) => {
-        console.log('adding', unit)
         // add the passed unit to the encounterUnits array
         // save to local storage
         const newUnits = allUnits.map(x => x);

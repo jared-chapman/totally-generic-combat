@@ -21,9 +21,7 @@ const ValueEdit = ({
     };
     
     const update = () => {
-        // parseInt is necessary to sort by initiative
-        // will need workaround for CR since it can be a fraction
-        updateFunction(parseInt(formValue), path, index) 
+        updateFunction(formValue, path, index) 
         setEditing(false)
     }
 
@@ -72,6 +70,7 @@ const ValueEdit = ({
                     placeholder={value}
                     onBlur={handleBlur}
                     onFocus={handleFocus}
+                    autoComplete="off"
                 />
                 {showModBox && (
                     <ModBox
